@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
 	console.log(isOpen);
 	return (
-		<nav className="relative flex justify-between py-8 font-medium transition-all ease-in  text-2xl ">
+		<nav className="relative flex justify-between py-8 font-normal transition-all ease-in  text-xl ">
 			<div className="left flex">
 				<div className="transition-all ease-in hover:scale-[1.05]">
 					ProperMove
@@ -65,8 +65,8 @@ const Navbar: React.FC = () => {
 			<div
 				id="mobile-menu"
 				className={clsx(
-					"md:hidden absolute top-0 -right-[100%] flex bg-black h-screen w-[60%] justify-center z-40 transition-all ease-in  duration-[400ms]",
-					{ "!right-0": isOpen }
+					"hidden absolute top-0 right-0 bg-black h-screen w-[60%] justify-center z-40 transition-all ease-in  duration-[400ms]",
+					{ "!flex": isOpen }
 				)}>
 				<nav className="text-white leading-loose tracking-wide text-xl flex flex-col items-center justify-center gap-7 ">
 					<a href="/">Home</a>
