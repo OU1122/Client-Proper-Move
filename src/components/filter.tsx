@@ -20,7 +20,7 @@ export const Filter: React.FC = () => {
 				</div>
 			</div>
 
-			<div className="bottom pr-[10px] flex-col flex md:flex-row gap--2 md:gap-4 md:items-center">
+			<div className="bottom mt-4 pr-[10px] flex-col flex md:flex-row gap--2 md:gap-4 md:items-center">
 				<div className="flex flex-col basis-1/5">
 					<label
 						htmlFor="type"

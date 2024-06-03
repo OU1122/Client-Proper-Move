@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FiMenu } from "react-icons/fi";
 import clsx from "clsx";
+import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
 	const [isOpen, setIsOpen] = useState(false);
@@ -12,26 +13,26 @@ const Navbar: React.FC = () => {
 					ProperMove
 				</div>
 				<ul className="hidden md:flex sm:ml-16 md:gap-3 lg:gap-7 ">
-					<a
-						href="/"
+					<Link
+						to="/"
 						className="transition-all ease-in hover:scale-[1.05]">
 						Home
-					</a>
-					<a
-						href="/"
+					</Link>
+					<Link
+						to="/"
 						className="transition-all ease-in hover:scale-[1.05]">
 						About
-					</a>
-					<a
-						href="/"
+					</Link>
+					<Link
+						to="/"
 						className="transition-all ease-in hover:scale-[1.05]">
 						Contact
-					</a>
-					<a
-						href="/"
+					</Link>
+					<Link
+						to="/"
 						className="transition-all ease-in hover:scale-[1.05]">
 						Agents
-					</a>
+					</Link>
 				</ul>
 			</div>
 			<div className="right flex  items-center gap-7  ">
