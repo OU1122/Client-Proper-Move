@@ -3,7 +3,7 @@ import SearchBox from "../components/searchBox";
 const HomePage: React.FC = () => {
 	return (
 		<div className="flex flex-col-reverse sm:flex-row m-10  ">
-			<div className="text-div w-full sm:w-[60%] pr-[50px]">
+			<div className="text-div w-full sm:w-[60%] md:pr-[50px]">
 				<div>
 					<h1 className="text-4xl font-bold leading-snug pt-10 sm:pt-32">
 						Find Your Dream Place Faster Than You Can Say Zoopla
@@ -18,20 +18,20 @@ const HomePage: React.FC = () => {
 
 				<SearchBox />
 
-				<div className="flex justify-between mt-10 flex-wrap gap-5 sm:gap-0">
-					<div className="flex flex-col basis-1/3 ">
+				<div className="flex justify-between mt-5 flex-wrap gap-5 sm:gap-0">
+					<div className="flex flex-col basis-1/3 p-4 ">
 						<span className="font-bold text-4xl tracking-wider">16+</span>
 						<span className=" text-lg font-light">
 							Years of Experience
 						</span>
 					</div>
-					<div className="flex flex-col basis-1/3">
-						<span className="font-bold text-4xl tracking-wider">
+					<div className="flex flex-col basis-1/3 p-4">
+						<span className="font-bold text-4xl tracking-wider ">
 							200+
 						</span>
 						<span className=" font-light text-lg">Awards Earned</span>
 					</div>
-					<div className="flex flex-col basis-1/3">
+					<div className="flex flex-col basis-1/3 p-4">
 						<span className="font-bold text-4xl tracking-wider">
 							1200+
 						</span>

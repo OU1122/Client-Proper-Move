@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
 				<div className="transition-all ease-in hover:scale-[1.05]">
 					ProperMove
 				</div>
-				<ul className="hidden md:flex sm:ml-7 md:gap-3 lg:gap-7 ">
+				<ul className="hidden md:flex sm:ml-16 md:gap-3 lg:gap-7 ">
 					<a
 						href="/"
 						className="transition-all ease-in hover:scale-[1.05]">
@@ -65,8 +65,8 @@ const Navbar: React.FC = () => {
 			<div
 				id="mobile-menu"
 				className={clsx(
-					"hidden absolute top-0 right-0 bg-black h-screen w-[60%] justify-center z-40 transition-all ease-in  duration-[400ms]",
-					{ "!flex": isOpen }
+					"hidden absolute top-0 -right-[400%] bg-black h-screen w-[60%] justify-center z-40 transition-all ease-in  duration-[400ms]",
+					{ "!flex !right-0": isOpen }
 				)}>
 				<nav className="text-white leading-loose tracking-wide text-xl flex flex-col items-center justify-center gap-7 ">
 					<a href="/">Home</a>
