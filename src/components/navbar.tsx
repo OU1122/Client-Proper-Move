@@ -1,11 +1,40 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
+	const mobileMenuRef = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
-	console.log(isOpen);
+
+	console.log(mobileMenuRef.current);
+
+	const handleClickOutside = (event: MouseEvent) => {
+		if (
+			mobileMenuRef.current &&
+			!mobileMenuRef.current.contains(event.target as Node)
+		) {
+			setIsOpen(false);
+		}
+	};
+
+	useEffect(() => {
+		if (isOpen) {
+			document.addEventListener("click", handleClickOutside);
+		} else {
+			document.removeEventListener("click", handleClickOutside);
+		}
+		// Cleanup the event listener on component unmount
+		return () => {
+			document.removeEventListener("click", handleClickOutside);
+		};
+	}, [isOpen]);
+
+	const handleMenuClick = (event: React.MouseEvent) => {
+		event.stopPropagation();
+		setIsOpen((prev) => !prev);
+	};
+
 	return (
 		<nav className="relative flex justify-between py-8 font-normal transition-all ease-in  text-xl ">
 			<div className="left flex">
@@ -52,7 +81,7 @@ const Navbar: React.FC = () => {
 				</div>
 				<div
 					className="z-50 md:hidden"
-					onClick={() => setIsOpen((prev) => !prev)}>
+					onClick={handleMenuClick}>
 					<div
 						id="mobile-menu-icon"
 						className={clsx(
@@ -64,6 +93,7 @@ const Navbar: React.FC = () => {
 				</div>
 			</div>
 			<div
+				ref={mobileMenuRef}
 				id="mobile-menu"
 				className={clsx(
 					"hidden absolute top-0 -right-[400%] bg-black h-screen w-[60%] justify-center z-40 transition-all ease-in  duration-[400ms]",
