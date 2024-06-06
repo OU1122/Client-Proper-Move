@@ -45,7 +45,7 @@ export const listData = [
 	},
 	{
 		id: 5,
-		title: "Apartment 5",
+		title: "Apartment With 3 Bedrooms",
 		img: "https://images.pexels.com/photos/276625/pexels-photo-276625.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		bedroom: 3,
 		bathroom: 2,
@@ -56,7 +56,7 @@ export const listData = [
 	},
 	{
 		id: 6,
-		title: "Apartment 6",
+		title: "Amazing Apartment with Outside Space",
 		img: "https://images.pexels.com/photos/271816/pexels-photo-271816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		bedroom: 1,
 		bathroom: 1,
@@ -67,7 +67,7 @@ export const listData = [
 	},
 	{
 		id: 7,
-		title: "Apartment 7",
+		title: "2 Bedroom Flat with Great Transport Link",
 		img: "https://images.pexels.com/photos/2029667/pexels-photo-2029667.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		bedroom: 2,
 		bathroom: 1,
@@ -78,7 +78,7 @@ export const listData = [
 	},
 	{
 		id: 8,
-		title: "Apartment 8",
+		title: "Prime Location Property. Reduced to Sell",
 		img: "https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
 		bedroom: 3,
 		bathroom: 2,

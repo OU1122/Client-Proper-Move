@@ -27,15 +27,15 @@ export const Card: React.FC<{ item: Item }> = ({ item }) => {
 			<div className="ml-5 right w-[50%] ">
 				<div className="flex flex-col w-full h-full justify-between">
 					<h2 className="text-lg font-semibold">{item.title}</h2>
-					<div className="flex leading-3 items-center gap-1">
-						<span className="">
+					<div className="flex leading-3">
+						<span className="text-slate-500 flex items-center flex-row gap-1">
 							<img
 								className="w-4 h-4"
 								src="/pin.png"
 								alt=""
 							/>
+							{item.address}
 						</span>
-						{item.address}
 					</div>
 					<div>
 						<span className="bg-yellow-200 rounded-md px-1 text-lg">

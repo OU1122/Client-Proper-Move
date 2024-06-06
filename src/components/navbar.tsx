@@ -7,8 +7,6 @@ const Navbar: React.FC = () => {
 	const mobileMenuRef = useRef(null);
 	const [isOpen, setIsOpen] = useState(false);
 
-	console.log(mobileMenuRef.current);
-
 	const handleClickOutside = (event: MouseEvent) => {
 		if (
 			mobileMenuRef.current &&
@@ -24,7 +22,7 @@ const Navbar: React.FC = () => {
 		} else {
 			document.removeEventListener("click", handleClickOutside);
 		}
-		// Cleanup the event listener on component unmount
+
 		return () => {
 			document.removeEventListener("click", handleClickOutside);
 		};
@@ -41,7 +39,7 @@ const Navbar: React.FC = () => {
 				<div className="transition-all ease-in hover:scale-[1.05]">
 					ProperMove
 				</div>
-				<ul className="hidden md:flex sm:ml-16 md:gap-3 lg:gap-7 ">
+				<ul className="hidden md:flex sm:ml-16 md:gap-3 lg:gap-8 ">
 					<Link
 						to="/"
 						className="transition-all ease-in hover:scale-[1.05]">
