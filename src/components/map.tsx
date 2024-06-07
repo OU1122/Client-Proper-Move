@@ -5,8 +5,8 @@ import { MapPin } from "./map-pin";
 interface Item {
 	id: number;
 	title: string;
-	img: string;
-	bedroom: number;
+	img?: string;
+	bedroom?: number;
 	bathroom: number;
 	price: number;
 	address: string;
