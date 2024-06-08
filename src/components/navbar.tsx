@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
 	const mobileMenuRef = useRef(null);
+	const user = true;
 	const [isOpen, setIsOpen] = useState(false);
 
 	const handleClickOutside = (event: MouseEvent) => {
@@ -34,7 +35,7 @@ const Navbar: React.FC = () => {
 	};
 
 	return (
-		<nav className="relative flex justify-between py-8 font-normal transition-all ease-in  text-xl ">
+		<nav className="relative flex justify-between items-center py-6 font-normal transition-all ease-in  text-xl ">
 			<div className="left flex">
 				<div className="transition-all ease-in hover:scale-[1.05]">
 					ProperMove
@@ -63,20 +64,42 @@ const Navbar: React.FC = () => {
 				</ul>
 			</div>
 			<div className="right flex  items-center gap-7  ">
-				<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
-					<a
-						href="/"
-						className="">
-						Sign in
-					</a>
-				</div>
-				<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
-					<a
-						href="/"
-						className="bg-yellow-400 px-4 py-2 rounded-2xl">
-						Sign up
-					</a>
-				</div>
+				{!user ? (
+					<>
+						<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
+							<a
+								href="/"
+								className="">
+								Sign in
+							</a>
+						</div>
+						<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
+							<a
+								href="/"
+								className="bg-yellow-400 px-4 py-2 rounded-2xl">
+								Sign up
+							</a>
+						</div>
+					</>
+				) : (
+					<div className="flex flex-row gap-4 items-center justify-center">
+						<img
+							className="w-8 h-8 rounded-full object-cover"
+							src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></img>
+						<span>John Doe</span>
+						<Link
+							className="relative bg-yellow-400 px-4 py-2 rounded-lg"
+							to="/profile">
+							<span className="">Profile</span>
+							<div
+								className="flex items-center justify-center text-sm w-5 h-5 text-white absolute -top-1 -right-1 rounded-full bg-red-500
+						">
+								3
+							</div>
+						</Link>
+					</div>
+				)}
+
 				<div
 					className="z-50 md:hidden"
 					onClick={handleMenuClick}>
