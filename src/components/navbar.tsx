@@ -4,9 +4,9 @@ import clsx from "clsx";
 import { Link } from "react-router-dom";
 
 const Navbar: React.FC = () => {
-	const mobileMenuRef = useRef(null);
+	const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 	const user = true;
-	const [isOpen, setIsOpen] = useState(false);
+	const [isOpen, setIsOpen] = useState<false | true>(false);
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (
@@ -76,19 +76,21 @@ const Navbar: React.FC = () => {
 						<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
 							<a
 								href="/"
-								className="bg-yellow-400 px-4 py-2 rounded-2xl">
+								className="bg-yellow-300 px-4 py-2 rounded-2xl">
 								Sign up
 							</a>
 						</div>
 					</>
 				) : (
-					<div className="flex flex-row gap-4 items-center justify-center">
-						<img
-							className="w-8 h-8 rounded-full object-cover"
-							src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></img>
-						<span>John Doe</span>
+					<div className="flex flex-row gap-4 pr-10 md:pr-2 items-center justify-center">
+						<Link to="/profile">
+							<img
+								className=" w-8 h-8 rounded-full object-cover"
+								src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></img>
+						</Link>
+						<span className="hidden md:block">John Doe</span>
 						<Link
-							className="relative bg-yellow-400 px-4 py-2 rounded-lg"
+							className="relative hidden md:block bg-yellow-300 px-4 py-2 rounded-lg"
 							to="/profile">
 							<span className="">Profile</span>
 							<div
@@ -106,7 +108,7 @@ const Navbar: React.FC = () => {
 					<div
 						id="mobile-menu-icon"
 						className={clsx(
-							"text-black text-3xl absolute right-0 top-8 pr-5",
+							"text-black text-3xl absolute right-0 top-7 pr-5",
 							{ "!text-white": isOpen }
 						)}>
 						<FiMenu />

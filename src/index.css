@@ -20,3 +20,7 @@ a {
 	width: 104%;
 	border-radius: 15px;
 }
+
+.message:nth-child(even) {
+	align-self: flex-end;
+}
