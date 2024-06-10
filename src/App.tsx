@@ -4,6 +4,7 @@ import Layout from "./routes/layout.tsx";
 import ListPage from "./routes/list-page.tsx";
 import SinglePage from "./routes/single-page.tsx";
 import ProfilePage from "./routes/profile-page.tsx";
+import Register from "./routes/register.tsx";
 
 function App() {
 	const router = createBrowserRouter([
@@ -26,6 +27,10 @@ function App() {
 				{
 					path: "profile",
 					element: <ProfilePage />,
+				},
+				{
+					path: "register",
+					element: <Register />,
 				},
 			],
 		},
