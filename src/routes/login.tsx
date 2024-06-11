@@ -1,11 +1,16 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import apiRequest from "../lib/apiRequest";
+import { AxiosError } from "axios";
 
 const Login: React.FC = () => {
 	const [err, setErr] = useState(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const navigate = useNavigate();
+
+	function isAxiosError(error: unknown): error is AxiosError {
+		return axios.isAxiosError(error);
+	}
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -16,7 +21,7 @@ const Login: React.FC = () => {
 
 		// FETCH USER
 		try {
-			const res = await axios.post("http://localhost:8800/api/auth/login", {
+			const res = await apiRequest.post("/auth/login", {
 				username,
 				password,
 			});

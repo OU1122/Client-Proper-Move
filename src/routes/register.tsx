@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import apiRequest from "../lib/apiRequest";
 
 const Register: React.FC = () => {
 	const [err, setErr] = useState(null);
@@ -15,14 +16,11 @@ const Register: React.FC = () => {
 		const password = formData.get("password");
 
 		try {
-			const res = await axios.post(
-				"http://localhost:8800/api/auth/register",
-				{
-					username,
-					email,
-					password,
-				}
-			);
+			const res = await apiRequest.post("auth/register", {
+				username,
+				email,
+				password,
+			});
 			console.log(res.data);
 			setErr(null);
 			navigate("/login");
