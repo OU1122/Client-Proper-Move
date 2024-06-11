@@ -5,6 +5,7 @@ import ListPage from "./routes/list-page.tsx";
 import SinglePage from "./routes/single-page.tsx";
 import ProfilePage from "./routes/profile-page.tsx";
 import Register from "./routes/register.tsx";
+import Login from "./routes/login.tsx";
 
 function App() {
 	const router = createBrowserRouter([
@@ -31,6 +32,10 @@ function App() {
 				{
 					path: "register",
 					element: <Register />,
+				},
+				{
+					path: "login",
+					element: <Login />,
 				},
 			],
 		},

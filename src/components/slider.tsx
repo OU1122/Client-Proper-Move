@@ -72,7 +72,7 @@ export const Slider: React.FC<{ data: data }> = ({ data }) => {
 					</div>
 				</div>
 			)}
-			<div className="flex w-full h-[200px] gap-3">
+			<div className="flex w-full gap-3">
 				<div className="main-img h-full flex-[3_1_0%]">
 					<img
 						onClick={() => setSliderImage(0)}
@@ -82,7 +82,7 @@ export const Slider: React.FC<{ data: data }> = ({ data }) => {
 				<div className="secondary-imgs gap-3 flex flex-col h-full w-1/3 flex-1">
 					{images.slice(1).map((img, index) => (
 						<img
-							className="cursor-pointer w-full h-[29%] object-cover rounded-lg"
+							className="cursor-pointer w-full h-full object-cover rounded-lg"
 							src={img}
 							key={index}
 							onClick={() => setSliderImage(index + 1)}></img>
