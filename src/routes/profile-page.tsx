@@ -1,19 +1,30 @@
 import { listData, userData } from "../lib/list-data";
 import Card from "../components/card";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import apiRequest from "../lib/apiRequest";
 
 const ProfilePage: React.FC = () => {
 	const data = listData;
 	const user = userData;
-
+	const navigate = useNavigate();
 	const [chatIsOpen, setChatIsOpen] = useState<null | true>(null);
+
+	const handleLogout = async () => {
+		try {
+			const res = await apiRequest.post("/auth/logout");
+			localStorage.removeItem("userData");
+			navigate("/");
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div className="flex flex-col md:flex-row full h-[calc(100%-96px)] pb-5">
 			<div className="flex flex-col left w-full md:w-[65%] px-4 mb-7 md:mb-0">
 				<div className="userInfo mb-5">
-					<div className="flex flex-col gap-1">
+					<div className="flex flex-col gap-2">
 						<div className="flex justify-between items-center mb-3">
 							<h2 className="text-xl ">User Information</h2>
 							<Link
@@ -22,7 +33,7 @@ const ProfilePage: React.FC = () => {
 								Update Profile
 							</Link>
 						</div>
-						<div className="flex flex-row gap-2 py-1 items-center">
+						<div className="flex flex-row gap-3 py-1 items-center">
 							<h2 className="text-sm">Avatar:</h2>
 							<img
 								className="w-8 h-8 rounded-full object-cover"
@@ -37,6 +48,14 @@ const ProfilePage: React.FC = () => {
 							<span className="font-semibold text-sm">
 								test@gmail.com
 							</span>
+						</div>
+						<div>
+							<button
+								onClick={handleLogout}
+								type="button"
+								className="leading-loose px-2 py-1 bg-yellow-300 rounded-lg">
+								Logout
+							</button>
 						</div>
 					</div>
 				</div>

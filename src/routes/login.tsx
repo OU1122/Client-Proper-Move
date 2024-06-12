@@ -15,6 +15,7 @@ const Login: React.FC = () => {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setIsLoading(true);
+		setErr(null);
 		const formData = new FormData(e.target);
 		const username = formData.get("username");
 		const password = formData.get("password");
@@ -26,8 +27,10 @@ const Login: React.FC = () => {
 				password,
 			});
 			console.log(res.data);
-			setErr(null);
-			navigate("/profile");
+			//localStorage.setItem();
+
+			localStorage.setItem("userData", JSON.stringify(res.data));
+			navigate("/");
 		} catch (error) {
 			console.log(error);
 			setErr(error.response.data.message);
