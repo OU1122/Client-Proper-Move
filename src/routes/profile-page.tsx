@@ -1,19 +1,21 @@
 import { listData, userData } from "../lib/list-data";
 import Card from "../components/card";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import apiRequest from "../lib/apiRequest";
+import { AuthContext } from "../context/authContext";
 
 const ProfilePage: React.FC = () => {
 	const data = listData;
 	const user = userData;
 	const navigate = useNavigate();
 	const [chatIsOpen, setChatIsOpen] = useState<null | true>(null);
+	const { currentUser, updateUser } = useContext(AuthContext);
 
 	const handleLogout = async () => {
 		try {
-			const res = await apiRequest.post("/auth/logout");
-			localStorage.removeItem("userData");
+			await apiRequest.post("/auth/logout");
+			updateUser(null);
 			navigate("/");
 		} catch (error) {
 			console.log(error);
@@ -37,16 +39,18 @@ const ProfilePage: React.FC = () => {
 							<h2 className="text-sm">Avatar:</h2>
 							<img
 								className="w-8 h-8 rounded-full object-cover"
-								src={user.img}></img>
+								src={currentUser.avatar || "/avatar.jpg"}></img>
 						</div>
 						<div className="flex flex-row gap-2 py-1 ">
 							<h2 className="text-sm">Username:</h2>
-							<span className="font-semibold text-sm">{user.name}</span>
+							<span className="font-semibold text-sm">
+								{currentUser.username}
+							</span>
 						</div>
 						<div className="flex flex-row gap-2 py-1">
 							<h2 className="text-sm">E-mail:</h2>
 							<span className="font-semibold text-sm">
-								test@gmail.com
+								{currentUser.email}
 							</span>
 						</div>
 						<div>

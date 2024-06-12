@@ -1,12 +1,14 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useContext } from "react";
 import { FiMenu } from "react-icons/fi";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../context/authContext";
 
 const Navbar: React.FC = () => {
 	const mobileMenuRef = useRef<HTMLDivElement | null>(null);
-	const user = true;
 	const [isOpen, setIsOpen] = useState<false | true>(false);
+
+	const { currentUser } = useContext(AuthContext);
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (
@@ -64,21 +66,21 @@ const Navbar: React.FC = () => {
 				</ul>
 			</div>
 			<div className="right flex  items-center gap-7  ">
-				{!user ? (
+				{!currentUser ? (
 					<>
 						<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
-							<a
-								href="/"
+							<Link
+								to="/login"
 								className="">
 								Sign in
-							</a>
+							</Link>
 						</div>
 						<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
-							<a
-								href="/"
+							<Link
+								to="/register"
 								className="bg-yellow-300 px-4 py-2 rounded-2xl">
 								Sign up
-							</a>
+							</Link>
 						</div>
 					</>
 				) : (
@@ -86,9 +88,11 @@ const Navbar: React.FC = () => {
 						<Link to="/profile">
 							<img
 								className=" w-8 h-8 rounded-full object-cover"
-								src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"></img>
+								src={currentUser.avatar || "/avatar.jpg"}></img>
 						</Link>
-						<span className="hidden md:block">John Doe</span>
+						<span className="hidden md:block">
+							{currentUser.username}
+						</span>
 						<Link
 							className="relative hidden md:block bg-yellow-300 px-4 py-2 rounded-lg"
 							to="/profile">

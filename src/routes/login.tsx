@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../lib/apiRequest";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
+import { AuthContext } from "../context/authContext";
 
 const Login: React.FC = () => {
 	const [err, setErr] = useState(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const navigate = useNavigate();
+
+	const { updateUser } = useContext(AuthContext);
 
 	function isAxiosError(error: unknown): error is AxiosError {
 		return axios.isAxiosError(error);
@@ -26,10 +29,13 @@ const Login: React.FC = () => {
 				username,
 				password,
 			});
-			console.log(res.data);
-			//localStorage.setItem();
 
-			localStorage.setItem("userData", JSON.stringify(res.data));
+			// UPDATE LOCAL STORAGE
+
+			updateUser(res.data);
+
+			// NAVIGATE TO HP
+
 			navigate("/");
 		} catch (error) {
 			console.log(error);

@@ -1,6 +1,11 @@
+import { useContext } from "react";
 import SearchBox from "../components/searchBox";
+import { AuthContext } from "../context/authContext";
 
 const HomePage: React.FC = () => {
+	const { currentUser } = useContext(AuthContext);
+	console.log(currentUser);
+
 	return (
 		<div className="flex flex-col-reverse sm:flex-row m-10  ">
 			<div className="text-div w-full sm:w-[60%] md:pr-[50px]">
