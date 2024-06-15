@@ -1,8 +1,15 @@
 import { ReactNode, createContext, useEffect, useState } from "react";
 
+interface User {
+	id: string;
+	username: string;
+	email: string;
+	avatar: string;
+}
+
 interface AuthContextType {
-	currentUser: string | null;
-	updateUser: (data: string | null) => void;
+	currentUser: User | null;
+	updateUser: React.Dispatch<React.SetStateAction<User | null>>;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -10,7 +17,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 );
 
 interface AuthContextProviderProps {
-	children: ReactNode;
+	children: React.ReactNode;
 }
 
 export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
@@ -20,7 +27,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 		JSON.parse(localStorage.getItem("userData") || "null") || null
 	);
 
-	const updateUser = (data: string | null) => {
+	const updateUser = (data: User | null) => {
 		setCurrentUser(data);
 	};
 

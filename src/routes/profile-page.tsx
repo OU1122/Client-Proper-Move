@@ -31,7 +31,7 @@ const ProfilePage: React.FC = () => {
 							<h2 className="text-xl ">User Information</h2>
 							<Link
 								className="leading-loose px-4 py-2 bg-yellow-300 rounded-lg"
-								to="/">
+								to={`/update-profile/${currentUser.id}`}>
 								Update Profile
 							</Link>
 						</div>
