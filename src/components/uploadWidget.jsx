@@ -1,16 +1,15 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useCallback } from "react";
 
 // Create a context to manage the script loading state
 const CloudinaryScriptContext = createContext();
 
-function UploadWidget({ uwConfig, setAvatar }) {
+function UploadWidget({ uwConfig, setState }) {
 	const [loaded, setLoaded] = useState(false);
 
 	useEffect(() => {
-		// Check if the script is already loaded
-		if (!loaded) {
-			const uwScript = document.getElementById("uw");
-			if (!uwScript) {
+		const loadScript = () => {
+			// Check if the script is already loaded
+			if (!document.getElementById("uw")) {
 				// If not loaded, create and load the script
 				const script = document.createElement("script");
 				script.setAttribute("async", "");
@@ -22,38 +21,34 @@ function UploadWidget({ uwConfig, setAvatar }) {
 				// If already loaded, update the state
 				setLoaded(true);
 			}
-		}
-	}, [loaded]);
+		};
 
-	const initializeCloudinaryWidget = () => {
-		if (loaded) {
-			var myWidget = window.cloudinary.createUploadWidget(
+		loadScript();
+	}, []);
+
+	const initializeCloudinaryWidget = useCallback(() => {
+		if (loaded && window.cloudinary) {
+			const myWidget = window.cloudinary.createUploadWidget(
 				uwConfig,
 				(error, result) => {
 					if (!error && result && result.event === "success") {
 						console.log("Done! Here is the image info: ", result.info);
-
-						setAvatar(result.info.secure_url);
+						setState((prev) => [...prev, result.info.secure_url]);
 					}
 				}
 			);
 
-			document.getElementById("upload_widget").addEventListener(
-				"click",
-				function () {
-					myWidget.open();
-				},
-				false
-			);
+			myWidget.open();
 		}
-	};
+	}, [loaded, uwConfig, setState]);
 
 	return (
 		<CloudinaryScriptContext.Provider value={{ loaded }}>
 			<button
 				id="upload_widget"
 				className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide"
-				onClick={initializeCloudinaryWidget}>
+				onClick={initializeCloudinaryWidget}
+				disabled={!loaded}>
 				Upload
 			</button>
 		</CloudinaryScriptContext.Provider>

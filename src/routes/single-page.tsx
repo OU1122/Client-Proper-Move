@@ -1,10 +1,15 @@
+import { useLoaderData } from "react-router-dom";
 import { Map } from "../components/map";
 import { Slider } from "../components/slider";
 import { singlePostData } from "../lib/list-data";
 import { userData } from "../lib/list-data";
+import DOMPurify from "dompurify";
 
 const SinglePage: React.FC = () => {
 	const data = singlePostData;
+
+	const post = useLoaderData();
+	console.log(post);
 
 	return (
 		<div className="flex w-full flex-col md:flex-row h-[calc(100%-96px)] px-5">
@@ -14,16 +19,16 @@ const SinglePage: React.FC = () => {
 				</div>
 				<div className="flex flex-row justify-between mt-10">
 					<div className="flex flex-col justify-between gap-4">
-						<h2 className="text-lg font-semibold">{data.title}</h2>
+						<h2 className="text-lg font-semibold">{post.address}</h2>
 						<div className="flex flex-row items-center gap-1">
 							<img
 								className="w-4 h-4"
 								src="/pin.png"
 							/>
-							<span className="text-slate-500">{data.address}</span>
+							<span className="text-slate-500">{post.address}</span>
 						</div>
 						<span className="bg-yellow-200 rounded-md px-1 text-lg w-fit">
-							£ {data.price}
+							£ {post.price}
 						</span>
 					</div>
 
@@ -31,15 +36,16 @@ const SinglePage: React.FC = () => {
 						<div className="p-3 flex items-center flex-col bg-yellow-100 rounded-lg">
 							<img
 								className="h-12 w-12 rounded-full object-cover"
-								src={userData.img}
+								src={post.user.avatar}
 							/>
-							<span className="font-bold ">{userData.name}</span>
+							<span className="font-bold ">{post.user.username}</span>
 						</div>
 					</div>
 				</div>
-				<div className="mt-10">
-					<p>{data.description}</p>
-				</div>
+				<div
+					dangerouslySetInnerHTML={{
+						__html: DOMPurify.sanitize(post.postDetail.desc),
+					}}></div>
 			</div>
 			<div className="right relative md:w-[35%] mt-7 md:mt-0 md:pl-8 flex flex-col gap-5 pb-10 ">
 				<div className="absolute -top-2 -left-10 w-screen h-full md:hidden -z-50 bg-[#fcf5f3]"></div>
@@ -53,7 +59,11 @@ const SinglePage: React.FC = () => {
 									src="/utility.png"></img>
 								<div className="flex flex-col">
 									<span className="font-bold">Utilities</span>
-									<span>Renter is responsible</span>
+									{post.postDetail.utilities === "owner" ? (
+										<span>Owner is responsible</span>
+									) : (
+										<span>Renter is responsible</span>
+									)}
 								</div>
 							</div>
 
@@ -63,7 +73,11 @@ const SinglePage: React.FC = () => {
 									className="w-6 h-6"></img>
 								<div className="flex flex-col">
 									<span className="font-bold">Pet Policy</span>
-									<span>Pets Allowed</span>
+									{post.postDetail.pet === "allowed" ? (
+										<span>Pets Allowed</span>
+									) : (
+										<span>Pets now allowed</span>
+									)}
 								</div>
 							</div>
 
@@ -73,7 +87,8 @@ const SinglePage: React.FC = () => {
 									className="w-6 h-6"></img>
 								<div className="flex flex-col">
 									<span className="font-bold">Property Fees</span>
-									<span>3 times the monthly rent as a deposit.</span>
+
+									<span>{post.postDetail.income}</span>
 								</div>
 							</div>
 						</div>
@@ -86,19 +101,27 @@ const SinglePage: React.FC = () => {
 							<img
 								className="w-6 h-6"
 								src="/size.png"></img>
-							<p>80sqm (861sqft)</p>
+							<p>{post.postDetail.size}</p>
 						</div>
 						<div className="flex flex-row px-2 py-2 items-center gap-1  bg-white rounded-lg">
 							<img
 								className="w-6 h-6"
 								src="/bed.png"></img>
-							<p>{data.bedRooms} Bed</p>
+							{post.bedroom === 1 ? (
+								<p>{post.bedroom} bedroom</p>
+							) : (
+								<p>{post.bedroom} bedrooms</p>
+							)}
 						</div>
 						<div className="flex flex-row px-2 py-2 items-center gap-1  bg-white rounded-lg">
 							<img
 								className="w-6 h-6"
 								src="/bath.png"></img>
-							<p>{data.bathroom} Bathroom</p>
+							{post.bathroom === 1 ? (
+								<p>{post.bathroom} bathroom</p>
+							) : (
+								<p>{post.bathroom} bathrooms</p>
+							)}
 						</div>
 					</div>
 				</div>
@@ -111,7 +134,7 @@ const SinglePage: React.FC = () => {
 								src="/school.png"></img>
 							<div className="flex flex-col">
 								<h3 className="font-bold">School</h3>
-								<p>200m away</p>
+								<p>{post.postDetail.school}m away</p>
 							</div>
 						</div>
 						<div className="flex flex-row items-center gap-2">
@@ -120,7 +143,7 @@ const SinglePage: React.FC = () => {
 								src="/bus.png"></img>
 							<div className="flex flex-col">
 								<h3 className="font-bold">Bus Stop</h3>
-								<p>200m away</p>
+								<p>{post.postDetail.bus}m away</p>
 							</div>
 						</div>
 						<div className="flex flex-row items-center gap-2">
@@ -129,7 +152,7 @@ const SinglePage: React.FC = () => {
 								src="/restaurant.png"></img>
 							<div className="flex flex-col">
 								<h3 className="font-bold">Restaurants</h3>
-								<p>200m away</p>
+								<p>{post.postDetail.restaurant}m away</p>
 							</div>
 						</div>
 					</div>

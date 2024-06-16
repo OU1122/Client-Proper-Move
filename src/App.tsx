@@ -7,6 +7,8 @@ import ProfilePage from "./routes/profile-page.tsx";
 import Register from "./routes/register.tsx";
 import Login from "./routes/login.tsx";
 import UpdateProfile from "./routes/updateProfile.tsx";
+import NewPost from "./routes/new-post.tsx";
+import { singlePageLoader } from "./lib/loaders.tsx";
 
 function App() {
 	const router = createBrowserRouter([
@@ -25,6 +27,7 @@ function App() {
 				{
 					path: ":id",
 					element: <SinglePage />,
+					loader: singlePageLoader,
 				},
 				{
 					path: "register",
@@ -47,6 +50,10 @@ function App() {
 				{
 					path: "/update-profile/:id",
 					element: <UpdateProfile />,
+				},
+				{
+					path: "/add-post",
+					element: <NewPost />,
 				},
 			],
 		},

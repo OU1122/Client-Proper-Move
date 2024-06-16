@@ -67,7 +67,7 @@ const ProfilePage: React.FC = () => {
 					<h2 className="text-xl  ">My List</h2>
 					<Link
 						className="leading-loose px-4 py-2 bg-yellow-300 rounded-lg"
-						to="/">
+						to="/add-post">
 						Add New Listing
 					</Link>
 				</div>

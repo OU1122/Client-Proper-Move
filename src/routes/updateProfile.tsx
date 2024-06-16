@@ -12,7 +12,7 @@ const UpdateProfile: React.FC = () => {
 
 	const { currentUser, updateUser } = context;
 	const [error, setError] = useState<string | null>(null);
-	const [avatar, setAvatar] = useState<string | null>(currentUser.avatar);
+	const [avatar, setAvatar] = useState<string[]>([]);
 	const [status, setStatus] = useState<string | null>(null);
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -29,7 +29,7 @@ const UpdateProfile: React.FC = () => {
 				username,
 				password,
 				email,
-				avatar,
+				avatar: avatar![0],
 			});
 
 			// UPDATE USER CONTEXT WITH RETURNED DATA
@@ -85,7 +85,7 @@ const UpdateProfile: React.FC = () => {
 				<div className="md:relative flex items-center justify-center flex-col gap-4 mb-5 md:mb-0">
 					<img
 						className="w-[100px] h-[100px] md:w-[200px] md:h-[200px] md:mb-0  rounded-full md:translate-x-16"
-						src={avatar || "/avatar.jpg"}></img>
+						src={avatar![0] || "/avatar.jpg"}></img>
 					<div className="bottom-4 left-[90px] md:-bottom-[75px]  md:translate-x-16">
 						<UploadWidget
 							uwConfig={{
@@ -95,7 +95,7 @@ const UpdateProfile: React.FC = () => {
 								maxImageFileSize: 1000000,
 								folder: "avatar",
 							}}
-							setAvatar={setAvatar}
+							setState={setAvatar}
 						/>
 					</div>
 				</div>
