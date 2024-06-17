@@ -17,7 +17,11 @@ interface Item {
 export const Map: React.FC<{ items: Item[] }> = ({ items }) => {
 	return (
 		<MapContainer
-			center={[52.479, -1.9026]}
+			center={
+				items.length === 1
+					? [items[0].latitude, items[0].longitude]
+					: [52.479, -1.9026]
+			}
 			zoom={7}
 			scrollWheelZoom={false}
 			className="map">

@@ -2,14 +2,13 @@ import { useLoaderData } from "react-router-dom";
 import { Map } from "../components/map";
 import { Slider } from "../components/slider";
 import { singlePostData } from "../lib/list-data";
-import { userData } from "../lib/list-data";
+
 import DOMPurify from "dompurify";
 
 const SinglePage: React.FC = () => {
 	const data = singlePostData;
 
 	const post = useLoaderData();
-	console.log(post);
 
 	return (
 		<div className="flex w-full flex-col md:flex-row h-[calc(100%-96px)] px-5">
