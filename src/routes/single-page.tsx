@@ -1,20 +1,33 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import { Map } from "../components/map";
 import { Slider } from "../components/slider";
-import { singlePostData } from "../lib/list-data";
 
 import DOMPurify from "dompurify";
+import { useContext } from "react";
+import { AuthContext } from "../context/authContext";
+import apiRequest from "../lib/apiRequest";
 
 const SinglePage: React.FC = () => {
-	const data = singlePostData;
-
+	const { currentUser } = useContext(AuthContext);
 	const post = useLoaderData();
+	const navigate = useNavigate();
+
+	const handleSave = async () => {
+		if (!currentUser) {
+			navigate("/login");
+		}
+		try {
+			await apiRequest.post("users/save", { postId: post.id });
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	return (
 		<div className="flex w-full flex-col md:flex-row h-[calc(100%-96px)] px-5">
 			<div className="left md:w-[65%] pr-2">
 				<div className="flex">
-					<Slider data={data} />
+					<Slider data={post} />
 				</div>
 				<div className="flex flex-row justify-between mt-10">
 					<div className="flex flex-col justify-between gap-4">
@@ -168,7 +181,9 @@ const SinglePage: React.FC = () => {
 								src="/chat.png"></img>
 							<p className="">Send a Message</p>
 						</button>
-						<button className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">
+						<button
+							onClick={handleSave}
+							className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">
 							<img
 								className="w-6 h-6"
 								src="/save.png"></img>

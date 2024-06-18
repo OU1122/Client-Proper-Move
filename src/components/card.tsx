@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 interface Item {
 	id: number;
 	title: string;
-	img: string;
+	images: string[];
 	bedroom: number;
 	bathroom: number;
 	price: number;
@@ -21,7 +21,7 @@ export const Card: React.FC<{ item: Item }> = ({ item }) => {
 					to={`/${item.id}`}>
 					<img
 						className="w-full h-full object-cover rounded-md"
-						src={item.img}></img>
+						src={item.images[0]}></img>
 				</Link>
 			</div>
 			<div className=" sm:ml-5 right w-full sm:w-[50%] ">
