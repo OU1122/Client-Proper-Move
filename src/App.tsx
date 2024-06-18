@@ -8,7 +8,11 @@ import Register from "./routes/register.tsx";
 import Login from "./routes/login.tsx";
 import UpdateProfile from "./routes/updateProfile.tsx";
 import NewPost from "./routes/new-post.tsx";
-import { listPageLoader, singlePageLoader } from "./lib/loaders.tsx";
+import {
+	listPageLoader,
+	profilePageLoader,
+	singlePageLoader,
+} from "./lib/loaders.tsx";
 
 function App() {
 	const router = createBrowserRouter([
@@ -47,6 +51,7 @@ function App() {
 				{
 					path: "/profile",
 					element: <ProfilePage />,
+					loader: profilePageLoader,
 				},
 				{
 					path: "/update-profile/:id",

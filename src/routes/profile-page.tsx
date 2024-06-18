@@ -1,6 +1,6 @@
 import { listData, userData } from "../lib/list-data";
 import Card from "../components/card";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import apiRequest from "../lib/apiRequest";
 import { AuthContext } from "../context/authContext";
@@ -11,6 +11,7 @@ const ProfilePage: React.FC = () => {
 	const navigate = useNavigate();
 	const [chatIsOpen, setChatIsOpen] = useState<null | true>(null);
 	const { currentUser, updateUser } = useContext(AuthContext);
+	const posts = useLoaderData();
 
 	const handleLogout = async () => {
 		try {
@@ -75,7 +76,7 @@ const ProfilePage: React.FC = () => {
 					{data.map((item) => (
 						<Card
 							key={item.id}
-							item={item}
+							posts={posts}
 						/>
 					))}
 				</div>

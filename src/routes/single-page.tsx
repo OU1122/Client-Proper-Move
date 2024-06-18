@@ -3,7 +3,7 @@ import { Map } from "../components/map";
 import { Slider } from "../components/slider";
 
 import DOMPurify from "dompurify";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import apiRequest from "../lib/apiRequest";
 
@@ -11,13 +11,15 @@ const SinglePage: React.FC = () => {
 	const { currentUser } = useContext(AuthContext);
 	const post = useLoaderData();
 	const navigate = useNavigate();
+	const [isSaved, setIsSaved] = useState(post.isSaved);
 
 	const handleSave = async () => {
 		if (!currentUser) {
 			navigate("/login");
 		}
 		try {
-			await apiRequest.post("users/save", { postId: post.id });
+			await apiRequest.post("/user/save", { postId: post.id });
+			setIsSaved((prev) => !prev);
 		} catch (error) {
 			console.log(error);
 		}
@@ -172,7 +174,7 @@ const SinglePage: React.FC = () => {
 				<div>
 					<h2 className="text-lg font-bold mb-4">Location</h2>
 					<div className="w-[96%] md:w-full h-[200px]">
-						<Map items={[data]} />
+						<Map items={[post]} />
 					</div>
 					<div className="flex justify-between mt-4">
 						<button className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">
@@ -187,7 +189,7 @@ const SinglePage: React.FC = () => {
 							<img
 								className="w-6 h-6"
 								src="/save.png"></img>
-							<p>Save Listing</p>
+							<p>{isSaved ? "Listing Saved" : "Save the Listing"}</p>
 						</button>
 					</div>
 				</div>

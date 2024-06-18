@@ -5,12 +5,12 @@ export const Filter: React.FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams("");
 
 	const [query, setQuery] = useState({
-		type: searchParams.get("type" || ""),
-		city: searchParams.get("city" || ""),
-		property: searchParams.get("property" || ""),
-		minPrice: searchParams.get("minPrice" || 0),
-		maxPrice: searchParams.get("maxPrice" || 1000000),
-		bedroom: searchParams.get("bedroom" || 1),
+		type: searchParams.get("type") || "buy",
+		city: searchParams.get("city") || "",
+		property: searchParams.get("property") || "apartment",
+		minPrice: searchParams.get("minPrice") || 0,
+		maxPrice: searchParams.get("maxPrice") || 1000000,
+		bedroom: searchParams.get("bedroom") || 1,
 	});
 
 	const handleChange = (e) => {
@@ -24,7 +24,7 @@ export const Filter: React.FC = () => {
 	return (
 		<div className="my-8">
 			<h1 className="text-xl">
-				Search results for{" "}
+				Search results{" "}
 				<span className="font-bold">{searchParams.get("city")}</span>
 			</h1>
 			<div className="top mt-4 pr-[10px]">
@@ -57,8 +57,7 @@ export const Filter: React.FC = () => {
 						id="type"
 						name="type"
 						onChange={handleChange}
-						defaultValue={query.type ?? ""}>
-						<option value="any">any</option>
+						defaultValue={query.type ?? "buy"}>
 						<option value="buy">Buy</option>
 						<option value="rent">Rent</option>
 					</select>
@@ -74,12 +73,11 @@ export const Filter: React.FC = () => {
 						className="w-full pl-4 py-2 border bg-white"
 						id="property"
 						name="property"
-						defaultValue={query.property ?? ""}>
-						<option value="any">any</option>
-						<option value="Apartment">Apartment</option>
-						<option value="House">House</option>
-						<option value="Condo">Condo</option>
-						<option value="Land">Land</option>
+						defaultValue={query.property ?? "apartment"}>
+						<option value="apartment">Apartment</option>
+						<option value="house">House</option>
+						<option value="condo">Condo</option>
+						<option value="land">Land</option>
 					</select>
 				</div>
 				<div className="flex flex-col basis-1/5">
@@ -97,7 +95,7 @@ export const Filter: React.FC = () => {
 						min="0"
 						max="10000000"
 						placeholder="any"
-						defaultValue={query.minPrice ?? ""}></input>
+						defaultValue={query.minPrice ?? 0}></input>
 				</div>
 				<div className="flex flex-col basis-1/5">
 					<label
@@ -114,7 +112,7 @@ export const Filter: React.FC = () => {
 						min="0"
 						max="10000000"
 						placeholder="any"
-						defaultValue={query.maxPrice ?? ""}></input>
+						defaultValue={query.maxPrice ?? 10000000}></input>
 				</div>
 				<div className="flex flex-col basis-1/5">
 					<label
@@ -131,7 +129,7 @@ export const Filter: React.FC = () => {
 						min={0}
 						max={10}
 						placeholder="any"
-						defaultValue={query.bedroom ?? ""}></input>
+						defaultValue={query.bedroom ?? 1}></input>
 				</div>
 				<div
 					className="hover:cursor-pointer min-w-[48px] h-[48px] mt-4 flex flex-col md:self-end justify-center items-center bg-yellow-300"
