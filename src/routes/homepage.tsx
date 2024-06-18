@@ -4,7 +4,6 @@ import { AuthContext } from "../context/authContext";
 
 const HomePage: React.FC = () => {
 	const { currentUser } = useContext(AuthContext);
-	console.log(currentUser);
 
 	return (
 		<div className="flex flex-col-reverse sm:flex-row m-10  ">
@@ -14,34 +13,34 @@ const HomePage: React.FC = () => {
 						Find Your Dream Place Faster Than You Can Say Zoopla
 					</h1>
 					<p className="pt-5">
-						Lorem ipsum dolor sit amet consectetur adipisicing elit.
-						Itaque illo dicta, esse ut aut repellat quisquam est accusamus
-						doloribus harum explicabo nemo at. Atque, deleniti a dolorem
-						enim quae non!
+						Unlock a new chapter - make home ownership make sense. Search
+						our extensive and up-to-date database of listings below.
+						Remember, you can contact the owner of the property directly
+						with our integrated messaging tool.
 					</p>
 				</div>
 
 				<SearchBox />
 
 				<div className="flex justify-between mt-5 flex-wrap gap-5 sm:gap-0">
-					<div className="flex flex-col basis-1/3 p-4 ">
+					<div className="flex flex-col basis-1/3 p-2 ">
 						<span className="font-bold text-4xl tracking-wider">16+</span>
 						<span className=" text-lg font-light">
-							Years of Experience
+							Years of Experience 💼
 						</span>
 					</div>
-					<div className="flex flex-col basis-1/3 p-4">
+					<div className="flex flex-col basis-1/3 p-2">
 						<span className="font-bold text-4xl tracking-wider ">
 							200+
 						</span>
-						<span className=" font-light text-lg">Awards Earned</span>
+						<span className=" font-light text-lg">Awards Earned 🏆</span>
 					</div>
-					<div className="flex flex-col basis-1/3 p-4">
+					<div className="flex flex-col basis-1/3 p-2">
 						<span className="font-bold text-4xl tracking-wider">
 							1200+
 						</span>
 						<span className="text-lg font-light">
-							Flats Ready for Purchase
+							Properties Available 🏡
 						</span>
 					</div>
 				</div>

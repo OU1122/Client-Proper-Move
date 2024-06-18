@@ -44,6 +44,15 @@ const Login: React.FC = () => {
 			setIsLoading(false);
 		}
 	};
+
+	const handleMouseDown = () => {
+		setInputType("text");
+	};
+
+	const handleMouseUp = () => {
+		setInputType("password");
+	};
+
 	return (
 		<div className="flex flex-col-reverse h-auto md:h-[70%] md:flex-row m-10  ">
 			<div className="form w-full md:w-[60%] md:pr-[50px] pb-10 md:pb-0">
@@ -59,12 +68,21 @@ const Login: React.FC = () => {
 							className="rounded-lg px-4 py-2 border-2 border-slate-400"
 							type="text"
 							placeholder="Username"></input>
-
-						<input
-							className="rounded-lg px-4 py-2 border-2 border-slate-400"
-							type="password"
-							name="password"
-							placeholder="Password"></input>
+						<div className="relative">
+							<input
+								className="rounded-lg px-4 py-2 border-2 border-slate-400"
+								type="password"
+								name="password"
+								placeholder="Password"></input>
+							<div
+								className="absolute top-[9px] right-[8px] cursor-pointer"
+								onMouseDown={handleMouseDown}
+								onMouseUp={handleMouseUp}>
+								<img
+									className="w-6 h-6"
+									src="/display-pw.png"></img>
+							</div>
+						</div>
 						<button
 							type="submit"
 							disabled={isLoading}

@@ -26,20 +26,20 @@ const SearchBox: React.FC = () => {
 						switchType("buy");
 					}}
 					className={clsx("py-3 px-7 rounded-tl-md   border border-r-0", {
-						"bg-black text-white": query.type == "buy",
-						"bg-white text-black": query.type == "rent",
+						"bg-black text-white": query.type === "buy",
+						"bg-white text-black": query.type === "rent",
 					})}>
 					Buy
 				</button>
 				<button
 					onClick={() => {
-						switchType("Rent");
+						switchType("rent");
 					}}
 					className={clsx(
 						"py-3 px-7 rounded-tr-md  border-b-0 border border-l-0 ",
 						{
-							"bg-black text-white": query.type == "rent",
-							"bg-white text-black": query.type == "buy",
+							"bg-black text-white": query.type === "rent",
+							"bg-white text-black": query.type === "buy",
 						}
 					)}>
 					Rent
@@ -48,13 +48,17 @@ const SearchBox: React.FC = () => {
 			<form className="bg-white flex flex-col gap-1 justify-start md:flex-row  border-2 rounded-bl-md rounded-br-md rounded-tr-md ">
 				<input
 					onChange={handleChange}
-					className="border-r-0 border-b-2 sm:border-b-0 py-3 pl-7 w-full"
+					className="border-r-0 border-b-2 sm:border-b-0 py-3 pl-7 w-2/4"
 					type="text"
 					name="city"
-					placeholder="City"></input>
+					placeholder={
+						query.type === "buy"
+							? "Where would you like to buy?"
+							: "Where would you like to rent?"
+					}></input>
 				<input
 					onChange={handleChange}
-					className="border-r-0 border-b-2 sm:border-b-0  py-3 pl-7 w-full"
+					className="border-r-0 border-b-2 sm:border-b-0  py-3 pl-7 w-1/4"
 					type="number"
 					name="minPrice"
 					min={0}
@@ -62,7 +66,7 @@ const SearchBox: React.FC = () => {
 					placeholder="Min Price"></input>
 				<input
 					onChange={handleChange}
-					className=" py-3  pl-7 w-full "
+					className=" py-3  pl-7 w-1/4 "
 					type="number"
 					name="maxPrice"
 					min={0}
