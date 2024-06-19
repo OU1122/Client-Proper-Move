@@ -12,21 +12,25 @@ interface Item {
 	longitude: number;
 }
 
-export const Card: React.FC<{ item: Item }> = ({ item }) => {
+export const Card: React.FC<{ post: Item }> = ({ post }) => {
 	return (
 		<div className="flex flex-col sm:flex-row gap-2">
-			<div className="left flex grow w-full sm:w-[40%]">
+			<div className="left flex grow w-full sm:w-[40%] shadow-lg shadow-zinc-100">
 				<Link
 					className="h-[200px] w-full hover:scale-[1.05] transition-all ease-in"
-					to={`/${item.id}`}>
+					to={`/${post.id}`}>
 					<img
 						className="w-full h-full object-cover rounded-md"
-						src={item.images[0]}></img>
+						src={
+							post.images[0]
+								? post.images[0]
+								: "/Image_not_available.png"
+						}></img>
 				</Link>
 			</div>
 			<div className=" sm:ml-5 right w-full sm:w-[50%] ">
 				<div className="flex flex-col w-full h-full justify-between gap-3 sm:gap-1">
-					<h2 className="text-lg font-semibold">{item.title}</h2>
+					<h2 className="text-lg font-semibold">{post.title}</h2>
 					<div className="flex leading-3">
 						<span className="text-slate-500 flex items-center flex-row gap-1">
 							<img
@@ -34,12 +38,12 @@ export const Card: React.FC<{ item: Item }> = ({ item }) => {
 								src="/pin.png"
 								alt=""
 							/>
-							{item.address}
+							{post.address}
 						</span>
 					</div>
 					<div>
 						<span className="bg-yellow-200 rounded-md px-1 text-lg">
-							£{item.price}
+							£{post.price}
 						</span>
 					</div>
 					<div className="flex justify-between">
@@ -50,14 +54,14 @@ export const Card: React.FC<{ item: Item }> = ({ item }) => {
 									src="/bed.png"
 									alt="bedrooms"
 								/>
-								{item.bedroom} <span>Bedroom</span>
+								{post.bedroom} <span>Bedroom</span>
 							</div>
 							<div className="flex flex-row items-center bg-slate-100 rounded-md  p-1 gap-1">
 								<img
 									className="w-4 h-4"
 									src="/bath.png"
 									alt="bathrooms"></img>
-								{item.bathroom} <span> Bathroom</span>
+								{post.bathroom} <span> Bathroom</span>
 							</div>
 						</div>
 						<div className="flex items-center gap-2 flex-wrap">

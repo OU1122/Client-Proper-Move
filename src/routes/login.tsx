@@ -8,7 +8,7 @@ const Login: React.FC = () => {
 	const [err, setErr] = useState(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const navigate = useNavigate();
-
+	const [inputType, setInputType] = useState("password");
 	const { updateUser } = useContext(AuthContext);
 
 	function isAxiosError(error: unknown): error is AxiosError {
@@ -71,7 +71,7 @@ const Login: React.FC = () => {
 						<div className="relative">
 							<input
 								className="rounded-lg px-4 py-2 border-2 border-slate-400"
-								type="password"
+								type={inputType}
 								name="password"
 								placeholder="Password"></input>
 							<div

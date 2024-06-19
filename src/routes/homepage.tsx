@@ -8,8 +8,8 @@ const HomePage: React.FC = () => {
 	return (
 		<div className="flex flex-col-reverse sm:flex-row m-10  ">
 			<div className="text-div w-full sm:w-[60%] md:pr-[50px]">
-				<div>
-					<h1 className="text-4xl font-bold leading-snug pt-10 sm:pt-32">
+				<div className="relative">
+					<h1 className="text-4xl font-bold leading-snug pt-10 sm:pt-24">
 						Find Your Dream Place Faster Than You Can Say Zoopla
 					</h1>
 					<p className="pt-5">
@@ -18,6 +18,8 @@ const HomePage: React.FC = () => {
 						Remember, you can contact the owner of the property directly
 						with our integrated messaging tool.
 					</p>
+					<div className=" -z-50 bg-[#bfd8c9] absolute top-[-4rem] left-[-15rem] h-[20rem] w-[20rem] rounded-full blur-[13rem]"></div>
+					<div className=" -z-50 bg-[#f8dbf1] absolute top-[-3rem] left-[25rem] h-[20rem] w-[20rem] rounded-full blur-[15rem]"></div>
 				</div>
 
 				<SearchBox />
@@ -25,7 +27,7 @@ const HomePage: React.FC = () => {
 				<div className="flex justify-between mt-5 flex-wrap gap-5 sm:gap-0">
 					<div className="flex flex-col basis-1/3 p-2 ">
 						<span className="font-bold text-4xl tracking-wider">16+</span>
-						<span className=" text-lg font-light">
+						<span className=" text-lg font-normal">
 							Years of Experience 💼
 						</span>
 					</div>
@@ -33,13 +35,13 @@ const HomePage: React.FC = () => {
 						<span className="font-bold text-4xl tracking-wider ">
 							200+
 						</span>
-						<span className=" font-light text-lg">Awards Earned 🏆</span>
+						<span className=" font-normal text-lg">Awards Earned 🏆</span>
 					</div>
 					<div className="flex flex-col basis-1/3 p-2">
 						<span className="font-bold text-4xl tracking-wider">
 							1200+
 						</span>
-						<span className="text-lg font-light">
+						<span className="text-lg font-normal">
 							Properties Available 🏡
 						</span>
 					</div>

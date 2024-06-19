@@ -39,28 +39,32 @@ const Navbar: React.FC = () => {
 	return (
 		<nav className="relative flex justify-between items-center py-6 font-normal transition-all ease-in  text-xl ">
 			<div className="left flex">
-				<div className="transition-all ease-in hover:scale-[1.05]">
-					ProperMove
+				<div className="flex items-center justify-center">
+					<Link to="/">
+						<span className="font-bold tracking-wide text-emerald-500">
+							Proper Move
+						</span>
+					</Link>
 				</div>
 				<ul className="hidden md:flex sm:ml-16 md:gap-3 lg:gap-8 ">
 					<Link
 						to="/"
-						className="transition-all ease-in hover:scale-[1.05]">
+						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
 						Home
 					</Link>
 					<Link
 						to="/"
-						className="transition-all ease-in hover:scale-[1.05]">
+						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
 						About
 					</Link>
 					<Link
 						to="/"
-						className="transition-all ease-in hover:scale-[1.05]">
+						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
 						Contact
 					</Link>
 					<Link
 						to="/"
-						className="transition-all ease-in hover:scale-[1.05]">
+						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
 						Agents
 					</Link>
 				</ul>
@@ -78,7 +82,7 @@ const Navbar: React.FC = () => {
 						<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
 							<Link
 								to="/register"
-								className="bg-yellow-300 px-4 py-2 rounded-2xl">
+								className="bg-emerald-500 hover:bg-emerald-600 px-4 py-2 rounded-2xl text-white">
 								Sign up
 							</Link>
 						</div>
@@ -86,17 +90,20 @@ const Navbar: React.FC = () => {
 				) : (
 					<div className="flex flex-row gap-4 pr-10 md:pr-2 items-center justify-center">
 						<Link to="/profile">
-							<img
-								className=" w-8 h-8 rounded-full object-cover"
-								src={currentUser.avatar || "/avatar.jpg"}></img>
+							<div className="flex flex-row gap-4 py-2 px-4 bg-white rounded-lg hover:shadow-md ease-in transition-all">
+								<img
+									className=" w-8 h-8 rounded-full object-cover"
+									src={currentUser.avatar || "/avatar.jpg"}></img>
+
+								<span className="hidden md:block">
+									{currentUser.username}
+								</span>
+							</div>
 						</Link>
-						<span className="hidden md:block">
-							{currentUser.username}
-						</span>
 						<Link
-							className="relative hidden md:block bg-yellow-300 px-4 py-2 rounded-lg"
+							className="relative hidden md:block bg-emerald-500 hover:bg-emerald-600 transition-all hover:shadow-md ease-in px-4 py-2 rounded-lg"
 							to="/profile">
-							<span className="">Profile</span>
+							<span className="text-white">Profile</span>
 							<div
 								className="flex items-center justify-center text-sm w-5 h-5 text-white absolute -top-1 -right-1 rounded-full bg-red-500
 						">

@@ -6,12 +6,11 @@ import apiRequest from "../lib/apiRequest";
 import { AuthContext } from "../context/authContext";
 
 const ProfilePage: React.FC = () => {
-	const data = listData;
 	const user = userData;
 	const navigate = useNavigate();
 	const [chatIsOpen, setChatIsOpen] = useState<null | true>(null);
 	const { currentUser, updateUser } = useContext(AuthContext);
-	const posts = useLoaderData();
+	const { userPosts } = useLoaderData();
 
 	const handleLogout = async () => {
 		try {
@@ -73,10 +72,10 @@ const ProfilePage: React.FC = () => {
 					</Link>
 				</div>
 				<div className="wrapper flex flex-col pr-[10px] gap-10 overflow-y-scroll ">
-					{data.map((item) => (
+					{userPosts.map((item) => (
 						<Card
 							key={item.id}
-							posts={posts}
+							post={item}
 						/>
 					))}
 				</div>

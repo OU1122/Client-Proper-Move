@@ -26,7 +26,8 @@ const SearchBox: React.FC = () => {
 						switchType("buy");
 					}}
 					className={clsx("py-3 px-7 rounded-tl-md   border border-r-0", {
-						"bg-black text-white": query.type === "buy",
+						"bg-emerald-500 text-white hover:bg-emerald-600 ease-in transition-all":
+							query.type === "buy",
 						"bg-white text-black": query.type === "rent",
 					})}>
 					Buy
@@ -38,14 +39,15 @@ const SearchBox: React.FC = () => {
 					className={clsx(
 						"py-3 px-7 rounded-tr-md  border-b-0 border border-l-0 ",
 						{
-							"bg-black text-white": query.type === "rent",
+							"bg-emerald-500 text-white hover:bg-emerald-600 ease-in transition-all":
+								query.type === "rent",
 							"bg-white text-black": query.type === "buy",
 						}
 					)}>
 					Rent
 				</button>
 			</div>
-			<form className="bg-white flex flex-col gap-1 justify-start md:flex-row  border-2 rounded-bl-md rounded-br-md rounded-tr-md ">
+			<form className="bg-white flex flex-col gap-1 justify-start md:flex-row shadow-lg  border-2 rounded-bl-md rounded-br-md rounded-tr-md ">
 				<input
 					onChange={handleChange}
 					className="border-r-0 border-b-2 sm:border-b-0 py-3 pl-7 w-2/4"
@@ -74,7 +76,7 @@ const SearchBox: React.FC = () => {
 					placeholder="Max Price"></input>
 				<Link
 					to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}>
-					<div className="flex w-full sm:min-w-[48px] sm:min-h-[48px] basis-1/4 justify-center items-center bg-yellow-300">
+					<div className="flex w-full sm:min-w-[48px] sm:min-h-[48px] basis-1/4 justify-center items-center bg-emerald-500 hover:bg-emerald-600 ease-in transition-all rounded-md">
 						<img
 							className="p-2 rounded-md "
 							src="/search.png"
