@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../lib/apiRequest";
 import axios, { AxiosError } from "axios";
 import { AuthContext } from "../context/authContext";
+import Button from "../components/button";
 
 const Login: React.FC = () => {
 	const [err, setErr] = useState(null);
@@ -83,12 +84,13 @@ const Login: React.FC = () => {
 									src="/display-pw.png"></img>
 							</div>
 						</div>
-						<button
+						<Button>Login</Button>
+						{/* <button
 							type="submit"
 							disabled={isLoading}
 							className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide mt-2">
 							Login
-						</button>
+						</button> */}
 					</form>
 					{err && <span className="text-red-400">{err}</span>}
 					<p className="underline text-slate-400">

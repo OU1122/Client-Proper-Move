@@ -18,7 +18,7 @@ const HomePage: React.FC = () => {
 						Remember, you can contact the owner of the property directly
 						with our integrated messaging tool.
 					</p>
-					<div className=" -z-50 bg-[#bfd8c9] absolute top-[-4rem] left-[-15rem] h-[20rem] w-[20rem] rounded-full blur-[13rem]"></div>
+
 					<div className=" -z-50 bg-[#f8dbf1] absolute top-[-3rem] left-[25rem] h-[20rem] w-[20rem] rounded-full blur-[15rem]"></div>
 				</div>
 
