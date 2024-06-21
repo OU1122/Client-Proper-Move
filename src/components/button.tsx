@@ -4,11 +4,16 @@ type ButtonProps = {
 	disabled?: boolean;
 } & React.ComponentPropsWithoutRef<"button">;
 
-export default function Button({ onClick, children, disabled }: ButtonProps) {
+export default function Button({
+	onClick,
+	children,
+	disabled,
+	type,
+}: ButtonProps) {
 	return (
 		<button
 			onClick={onClick}
-			type="button"
+			type={type}
 			disabled={disabled}
 			className="leading-loose px-2 py-1 bg-emerald-500 text-white hover:bg-emerald-600 ease-in transition-all rounded-lg">
 			{children}

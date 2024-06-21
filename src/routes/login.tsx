@@ -84,13 +84,7 @@ const Login: React.FC = () => {
 									src="/display-pw.png"></img>
 							</div>
 						</div>
-						<Button>Login</Button>
-						{/* <button
-							type="submit"
-							disabled={isLoading}
-							className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide mt-2">
-							Login
-						</button> */}
+						<Button type="submit">Login</Button>
 					</form>
 					{err && <span className="text-red-400">{err}</span>}
 					<p className="underline text-slate-400">

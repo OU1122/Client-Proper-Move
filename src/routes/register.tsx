@@ -1,10 +1,10 @@
-import axios from "axios";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../lib/apiRequest";
+import Button from "../components/button";
 
 const Register: React.FC = () => {
-	const [err, setErr] = useState(null);
+	const [err, setErr] = useState<null | string>(null);
 	const navigate = useNavigate();
 
 	const [inputType, setInputType] = useState("password");
@@ -17,6 +17,9 @@ const Register: React.FC = () => {
 		const email = formData.get("email");
 		const password = formData.get("password");
 
+		if (!username || !email || !password) {
+			return setErr("Please fill in all fields.");
+		}
 		try {
 			const res = await apiRequest.post("auth/register", {
 				username,
@@ -75,11 +78,12 @@ const Register: React.FC = () => {
 									src="/display-pw.png"></img>
 							</div>
 						</div>
-						<button
+						<Button type="submit">Register</Button>
+						{/* <button
 							type="submit"
 							className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide mt-2">
 							Register
-						</button>
+						</button> */}
 					</form>
 					{err && <span className="text-red-400">{err}</span>}
 					<p className="underline text-slate-400">
