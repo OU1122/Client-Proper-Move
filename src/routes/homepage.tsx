@@ -4,6 +4,7 @@ import { AuthContext } from "../context/authContext";
 
 const HomePage: React.FC = () => {
 	const { currentUser } = useContext(AuthContext);
+	console.log(currentUser);
 
 	return (
 		<div className="flex flex-col-reverse sm:flex-row m-10  ">
@@ -18,8 +19,6 @@ const HomePage: React.FC = () => {
 						Remember, you can contact the owner of the property directly
 						with our integrated messaging tool.
 					</p>
-
-					<div className=" -z-50 bg-[#f8dbf1] absolute top-[-3rem] left-[25rem] h-[20rem] w-[20rem] rounded-full blur-[15rem]"></div>
 				</div>
 
 				<SearchBox />
