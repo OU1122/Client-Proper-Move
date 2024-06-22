@@ -1,9 +1,10 @@
-import { listData, userData } from "../lib/list-data";
+import { userData } from "../lib/list-data";
 import Card from "../components/card";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import apiRequest from "../lib/apiRequest";
 import { AuthContext } from "../context/authContext";
+import Button from "../components/button";
 
 const ProfilePage: React.FC = () => {
 	const user = userData;
@@ -29,11 +30,14 @@ const ProfilePage: React.FC = () => {
 					<div className="flex flex-col gap-2">
 						<div className="flex justify-between items-center mb-3">
 							<h2 className="text-xl ">User Information</h2>
-							<Link
+							<Button to={`/update-profile/${currentUser.id}`}>
+								Update Profile
+							</Button>
+							{/* <Link
 								className="leading-loose px-4 py-2 bg-yellow-300 rounded-lg"
 								to={`/update-profile/${currentUser.id}`}>
 								Update Profile
-							</Link>
+							</Link> */}
 						</div>
 						<div className="flex flex-row gap-3 py-1 items-center">
 							<h2 className="text-sm">Avatar:</h2>
@@ -54,22 +58,22 @@ const ProfilePage: React.FC = () => {
 							</span>
 						</div>
 						<div>
-							<button
-								onClick={handleLogout}
+							<Button
 								type="button"
-								className="leading-loose px-2 py-1 bg-yellow-300 rounded-lg">
+								onClick={handleLogout}>
 								Logout
-							</button>
+							</Button>
 						</div>
 					</div>
 				</div>
 				<div className="myList flex justify-between items-center mb-8 pb-4 border-b-2">
-					<h2 className="text-xl  ">My List</h2>
-					<Link
+					<h2 className="text-xl  ">My Listings & Saved Properties</h2>
+					<Button to="/add-post">Add New Listing</Button>
+					{/* <Link
 						className="leading-loose px-4 py-2 bg-yellow-300 rounded-lg"
 						to="/add-post">
 						Add New Listing
-					</Link>
+					</Link> */}
 				</div>
 				<div className="wrapper flex flex-col pr-[10px] gap-10 overflow-y-scroll ">
 					{userPosts.map((item) => (

@@ -35,7 +35,7 @@ export const Filter: React.FC = () => {
 						City
 					</label>
 					<input
-						className="w-full px-4 py-2 border bg-white"
+						className="w-full px-4 py-2 border bg-white rounded-md"
 						type="text"
 						id="city"
 						name="city"
@@ -53,7 +53,7 @@ export const Filter: React.FC = () => {
 						Type
 					</label>
 					<select
-						className="w-full pl-4 py-2 border bg-white"
+						className="w-full pl-4 py-2 border bg-white rounded-md"
 						id="type"
 						name="type"
 						onChange={handleChange}
@@ -70,7 +70,7 @@ export const Filter: React.FC = () => {
 					</label>
 					<select
 						onChange={handleChange}
-						className="w-full pl-4 py-2 border bg-white"
+						className="w-full pl-4 py-2 border bg-white rounded-md"
 						id="property"
 						name="property"
 						defaultValue={query.property ?? "apartment"}>
@@ -88,7 +88,7 @@ export const Filter: React.FC = () => {
 					</label>
 					<input
 						onChange={handleChange}
-						className="w-full pl-4 py-2 border bg-white"
+						className="w-full pl-4 py-2 border bg-white rounded-md"
 						type="number"
 						name="minPrice"
 						step="5000"
@@ -105,7 +105,7 @@ export const Filter: React.FC = () => {
 					</label>
 					<input
 						onChange={handleChange}
-						className="w-full pl-4 py-2 border bg-white"
+						className="w-full pl-4 py-2 border bg-white rounded-md"
 						type="number"
 						name="maxPrice"
 						step="5000"
@@ -122,7 +122,7 @@ export const Filter: React.FC = () => {
 					</label>
 					<input
 						onChange={handleChange}
-						className="w-full pl-4 py-2 border bg-white"
+						className="w-full pl-4 py-2 border bg-white rounded-md"
 						type="number"
 						id="bedroom"
 						name="bedroom"
@@ -132,7 +132,7 @@ export const Filter: React.FC = () => {
 						defaultValue={query.bedroom ?? 1}></input>
 				</div>
 				<div
-					className="hover:cursor-pointer min-w-[48px] h-[48px] mt-4 flex flex-col md:self-end justify-center items-center bg-yellow-300"
+					className="hover:cursor-pointer min-w-[48px] h-[48px] mt-4 flex flex-col md:self-end justify-center items-center bg-emerald-500 hover:bg-emerald-600 ease-in transition-all rounded-md "
 					onClick={handleFilter}>
 					<img
 						className="w-[24px] h-[24px]"

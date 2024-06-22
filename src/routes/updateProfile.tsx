@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import apiRequest from "../lib/apiRequest";
 import UploadWidget from "../components/uploadWidget";
+import Button from "../components/button";
 
 const UpdateProfile: React.FC = () => {
 	const context = useContext(AuthContext);
@@ -88,11 +89,12 @@ const UpdateProfile: React.FC = () => {
 							</div>
 						</div>
 						{status ? <span>{status}</span> : null}
-						<button
+						{/* <button
 							type="submit"
 							className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide mt-2">
 							Update
-						</button>
+						</button> */}
+						<Button type="submit">Update</Button>
 					</form>
 
 					<p className="underline text-slate-400"></p>
@@ -101,7 +103,7 @@ const UpdateProfile: React.FC = () => {
 				</div>
 			</div>
 			<div className=" md:relative  h-full md:h-auto md:w-[40%] flex items-center justify-center ">
-				<div className="md:relative flex items-center justify-center flex-col gap-4 mb-5 md:mb-0">
+				<div className="md:relative pb-5 flex items-center justify-center flex-col gap-4 mb-5 md:mb-0">
 					<img
 						className="w-[100px] h-[100px] md:w-[200px] md:h-[200px] md:mb-0  rounded-full md:translate-x-16"
 						src={currentUser!.avatar || "/avatar.jpg"}></img>

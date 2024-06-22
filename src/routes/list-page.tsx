@@ -17,7 +17,7 @@ const ListPage: React.FC = () => {
 					{posts.map((item) => (
 						<Card
 							key={item.id}
-							item={item}
+							post={item}
 						/>
 					))}
 				</div>

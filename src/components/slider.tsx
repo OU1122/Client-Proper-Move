@@ -44,7 +44,7 @@ export const Slider: React.FC<{ data: data }> = ({ data }) => {
 	return (
 		<>
 			{sliderImage !== null && (
-				<div className="fixed top-0 left-0 flex flex-row center items-center justify-center bg-black/70 w-screen h-screen gap-4 p-16 z-20">
+				<div className="fixed top-0 left-0 flex flex-row center items-center justify-center bg-black/70 w-screen h-screen gap-4 p-16 z-50">
 					<div className="flex items-center justify-center pr-6">
 						<img
 							onClick={() => changeImage("left")}

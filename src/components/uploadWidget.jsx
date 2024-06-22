@@ -46,7 +46,7 @@ function UploadWidget({ uwConfig, setState }) {
 		<CloudinaryScriptContext.Provider value={{ loaded }}>
 			<button
 				id="upload_widget"
-				className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide"
+				className="leading-loose  bg-emerald-500 text-white hover:bg-emerald-600 hover:shadow-md ease-in px-4 py-2  transition-all rounded-lg"
 				onClick={initializeCloudinaryWidget}
 				disabled={!loaded}>
 				Upload

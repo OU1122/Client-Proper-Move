@@ -53,14 +53,14 @@ const Navbar: React.FC = () => {
 						Home
 					</Link>
 					<Link
-						to="/"
+						to="/list?type=buy&city=&property=apartment&minPrice=0&maxPrice=0&bedroom=1"
 						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
-						About
+						Buy
 					</Link>
 					<Link
-						to="/"
+						to="list?type=rent&city=&property=apartment&minPrice=0&maxPrice=0&bedroom=1"
 						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
-						Contact
+						Rent
 					</Link>
 					<Link
 						to="/"

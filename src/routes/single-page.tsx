@@ -6,12 +6,17 @@ import DOMPurify from "dompurify";
 import { useContext, useState } from "react";
 import { AuthContext } from "../context/authContext";
 import apiRequest from "../lib/apiRequest";
+import Modal from "../components/modal";
+import React from "react";
 
 const SinglePage: React.FC = () => {
 	const { currentUser } = useContext(AuthContext);
 	const post = useLoaderData();
 	const navigate = useNavigate();
 	const [isSaved, setIsSaved] = useState(post.isSaved);
+	const [open, setOpen] = React.useState(false);
+	const handleOpen = () => setOpen(true);
+	const handleClose = () => setOpen(false);
 
 	const handleSave = async () => {
 		if (!currentUser) {
@@ -176,13 +181,15 @@ const SinglePage: React.FC = () => {
 					<div className="w-[96%] md:w-full h-[200px]">
 						<Map items={[post]} />
 					</div>
-					<div className="flex justify-between mt-4">
-						<button className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">
-							<img
-								className="w-6 h-6"
-								src="/chat.png"></img>
-							<p className="">Send a Message</p>
-						</button>
+					<div
+						className="flex justify-between mt-4"
+						onClick={handleOpen}>
+						<Modal
+							handleClose={handleClose}
+							handleOpen={handleOpen}
+							open={open}
+						/>
+
 						<button
 							onClick={handleSave}
 							className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">

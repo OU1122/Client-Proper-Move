@@ -24,7 +24,7 @@ export const Map: React.FC<{ items: Item[] }> = ({ items }) => {
 			}
 			zoom={7}
 			scrollWheelZoom={false}
-			className="map">
+			className="map z-0">
 			<TileLayer
 				attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
 				url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
