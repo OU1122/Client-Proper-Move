@@ -1,10 +1,10 @@
 import { useState } from "react";
-
 import apiRequest from "../lib/apiRequest";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import UploadWidget from "../components/uploadWidget";
 import { useNavigate } from "react-router-dom";
+import Button from "../components/button";
 
 const NewPost: React.FC = () => {
 	const [value, setValue] = useState<string>("");
@@ -262,7 +262,7 @@ const NewPost: React.FC = () => {
 									id="income"
 									className="rounded-lg px-4 py-2 border-2 border-slate-400"
 									type="text"
-									placeholder=""></input>
+									placeholder="e.g. deposit required.."></input>
 							</div>
 							<div className="flex flex-col">
 								<label
@@ -319,8 +319,13 @@ const NewPost: React.FC = () => {
 									type="number"
 									placeholder=""></input>
 							</div>
-
-							<button
+							<Button
+								disabled={images.length < 1 ? true : false}
+								images={images}
+								type="submit">
+								Add Listing
+							</Button>
+							{/* <button
 								disabled={images.length < 1 ? true : false}
 								type="submit"
 								className={`rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide mt-2 ${
@@ -329,7 +334,7 @@ const NewPost: React.FC = () => {
 										: ""
 								}`}>
 								Add Listing
-							</button>
+							</button> */}
 						</div>
 						{error && (
 							<span className="text-center text-red-400">{error}</span>

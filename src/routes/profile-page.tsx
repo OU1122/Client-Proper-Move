@@ -12,7 +12,7 @@ const ProfilePage: React.FC = () => {
 	const [chatIsOpen, setChatIsOpen] = useState<null | true>(null);
 	const { currentUser, updateUser } = useContext(AuthContext);
 	const { userPosts } = useLoaderData();
-
+	console.log(currentUser);
 	const handleLogout = async () => {
 		try {
 			await apiRequest.post("/auth/logout");

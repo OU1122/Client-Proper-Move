@@ -8,6 +8,7 @@ import { AuthContext } from "../context/authContext";
 import apiRequest from "../lib/apiRequest";
 import Modal from "../components/modal";
 import React from "react";
+import { numberFormatter } from "../lib/numberFormatter";
 
 const SinglePage: React.FC = () => {
 	const { currentUser } = useContext(AuthContext);
@@ -33,9 +34,8 @@ const SinglePage: React.FC = () => {
 	return (
 		<div className="flex w-full flex-col md:flex-row h-[calc(100%-96px)] px-5">
 			<div className="left md:w-[65%] pr-2">
-				<div className="flex">
-					<Slider data={post} />
-				</div>
+				<Slider data={post} />
+
 				<div className="flex flex-row justify-between mt-10">
 					<div className="flex flex-col justify-between gap-4">
 						<h2 className="text-lg font-semibold">{post.address}</h2>
@@ -47,7 +47,7 @@ const SinglePage: React.FC = () => {
 							<span className="text-slate-500">{post.address}</span>
 						</div>
 						<span className="bg-yellow-200 rounded-md px-1 text-lg w-fit">
-							£ {post.price}
+							{numberFormatter.format(post.price)}
 						</span>
 					</div>
 
@@ -55,13 +55,14 @@ const SinglePage: React.FC = () => {
 						<div className="p-3 flex items-center flex-col bg-yellow-100 rounded-lg">
 							<img
 								className="h-12 w-12 rounded-full object-cover"
-								src={post.user.avatar}
+								src={post.user.avatar || "/avatar.jpg"}
 							/>
 							<span className="font-bold ">{post.user.username}</span>
 						</div>
 					</div>
 				</div>
 				<div
+					className="mt-5"
 					dangerouslySetInnerHTML={{
 						__html: DOMPurify.sanitize(post.postDetail.desc),
 					}}></div>
