@@ -181,10 +181,9 @@ const SinglePage: React.FC = () => {
 					<div className="w-[96%] md:w-full h-[200px]">
 						<Map items={[post]} />
 					</div>
-					<div
-						className="flex justify-between mt-4"
-						onClick={handleOpen}>
+					<div className="flex justify-between mt-4 min-w-fit flex-wrap">
 						<Modal
+							post={post}
 							handleClose={handleClose}
 							handleOpen={handleOpen}
 							open={open}
@@ -192,11 +191,13 @@ const SinglePage: React.FC = () => {
 
 						<button
 							onClick={handleSave}
-							className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">
+							className=" min-w-fit flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">
 							<img
 								className="w-6 h-6"
 								src="/save.png"></img>
-							<p>{isSaved ? "Listing Saved" : "Save the Listing"}</p>
+							<p className="hidden lg:block">
+								{isSaved ? "Listing Saved" : "Save the Listing"}
+							</p>
 						</button>
 					</div>
 				</div>

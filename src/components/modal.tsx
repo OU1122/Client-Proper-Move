@@ -2,16 +2,62 @@ import { Modal as BaseModal } from "@mui/base/Modal";
 import Fade from "@mui/material/Fade";
 import { Button } from "@mui/base/Button";
 import { styled, css } from "@mui/system";
-import React from "react";
+import React, { useContext, useState } from "react";
+import emailjs from "@emailjs/browser";
+import { AuthContext } from "../context/authContext";
 
-export default function TransitionsModal({ handleOpen, handleClose, open }) {
+export default function TransitionsModal({
+	handleOpen,
+	handleClose,
+	open,
+	post,
+}) {
+	const { currentUser } = useContext(AuthContext);
+	const [status, setStatus] = useState("");
+	const [isLoading, setIsLoading] = useState(false);
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+		e.preventDefault();
+		setStatus("");
+		setIsLoading(true);
+		//EXTRACT FORM INPUTS
+		const formData = new FormData(e.currentTarget);
+		const { message } = Object.fromEntries(formData);
+
+		const templateParams = {
+			to_name: `${post.user.username}`,
+			from_name: `${currentUser.email}`,
+			message,
+		};
+
+		try {
+			await emailjs.send(
+				"service_wlpka8i",
+				"template_vl2fv4b",
+				templateParams,
+				{
+					publicKey: "G3dm8K2Kad1bR3H-W",
+				}
+			);
+			setStatus("Your message was sent successfully.");
+		} catch (error) {
+			console.log("FAILED...", error.text);
+			setStatus("Failed to send message, please try again.");
+		} finally {
+			setIsLoading(false);
+		}
+	};
+
 	return (
 		<div>
-			<div className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg">
+			<div
+				className="flex flex-row items-center p-2 gap-2 justify-center border bg-white rounded-lg cursor-pointer min-w-fit"
+				onClick={handleOpen}>
 				<img
 					className="w-6 h-6"
 					src="/chat.png"></img>
-				<TriggerButton onClick={handleOpen}>Send a Message</TriggerButton>
+				<TriggerButton onClick={handleOpen}>
+					<span className="hidden lg:block">Send a Message</span>
+				</TriggerButton>
 			</div>
 			<Modal
 				aria-labelledby="transition-modal-title"
@@ -22,16 +68,34 @@ export default function TransitionsModal({ handleOpen, handleClose, open }) {
 				slots={{ backdrop: StyledBackdrop }}>
 				<Fade in={open}>
 					<ModalContent sx={style}>
-						<h2
-							id="transition-modal-title"
-							className="modal-title">
-							Text in a child modal
-						</h2>
-						<p
-							id="transition-modal-description"
-							className="modal-description">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-						</p>
+						<div className="relative">
+							<h2
+								id="transition-modal-title"
+								className="modal-title text-lg font-semibold">
+								Send a message to{" "}
+								<span className="font-semibold">
+									{post.user.username}
+								</span>
+							</h2>
+							<form
+								className="flex flex-col gap-4"
+								onSubmit={handleSubmit}>
+								<textarea
+									name="message"
+									id="message"
+									placeholder="Hi, I would love to learn more about your property..."
+									className=" rounded-lg h-[8rem] text-start p-2 leading-relaxed border-[1px]"></textarea>
+								<button
+									disabled={isLoading}
+									type="submit"
+									className={`bg-emerald-500 hover:bg-emerald-600 transition-all hover:shadow-md ease-in px-4 py-2 rounded-lg text-white ${
+										isLoading ? "cursor-wait !bg-emerald-300" : ""
+									}`}>
+									Send
+								</button>
+								<span>{status}</span>
+							</form>
+						</div>
 					</ModalContent>
 				</Fade>
 			</Modal>
