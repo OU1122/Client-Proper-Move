@@ -31,7 +31,9 @@ export const Card: React.FC<{ post: Item }> = ({ post }) => {
 			</div>
 			<div className=" sm:ml-5 right w-full sm:w-[50%] ">
 				<div className="flex flex-col w-full h-full justify-between gap-3 sm:gap-1">
-					<h2 className="text-lg font-semibold">{post.title}</h2>
+					<Link to={`/${post.id}`}>
+						<h2 className="text-lg font-semibold">{post.title}</h2>
+					</Link>
 					<div className="flex leading-3">
 						<span className="text-slate-500 flex items-center flex-row gap-1">
 							<img
