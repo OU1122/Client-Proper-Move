@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { numberFormatter } from "../lib/numberFormatter";
 
 interface Item {
 	id: number;
@@ -42,8 +43,8 @@ export const Card: React.FC<{ post: Item }> = ({ post }) => {
 						</span>
 					</div>
 					<div>
-						<span className="bg-yellow-200 rounded-md px-1 text-lg">
-							£{post.price}
+						<span className="bg-emerald-100 rounded-md px-1 text-lg">
+							{numberFormatter.format(post.price)}
 						</span>
 					</div>
 					<div className="flex justify-between">

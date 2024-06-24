@@ -53,19 +53,14 @@ const Navbar: React.FC = () => {
 						Home
 					</Link>
 					<Link
-						to="/list?type=buy&city=&property=apartment&minPrice=0&maxPrice=0&bedroom=1"
+						to="/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1"
 						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
 						Buy
 					</Link>
 					<Link
-						to="list?type=rent&city=&property=apartment&minPrice=0&maxPrice=0&bedroom=1"
+						to="list?type=rent&city=&property=house&minPrice=0&maxPrice=0&bedroom=1"
 						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
 						Rent
-					</Link>
-					<Link
-						to="/"
-						className="transition-all ease-in hover:underline hover:bg-gray-100/85 rounded-lg px-1 py-1 underline-offset-2  decoration-emerald-500">
-						Agents
 					</Link>
 				</ul>
 			</div>
@@ -104,11 +99,6 @@ const Navbar: React.FC = () => {
 							className="relative hidden md:block bg-emerald-500 hover:bg-emerald-600 transition-all hover:shadow-md ease-in px-4 py-2 rounded-lg"
 							to="/profile">
 							<span className="text-white">Profile</span>
-							<div
-								className="flex items-center justify-center text-sm w-5 h-5 text-white absolute -top-1 -right-1 rounded-full bg-red-500
-						">
-								3
-							</div>
 						</Link>
 					</div>
 				)}
@@ -119,7 +109,7 @@ const Navbar: React.FC = () => {
 					<div
 						id="mobile-menu-icon"
 						className={clsx(
-							"text-black text-3xl absolute right-0 top-7 pr-5",
+							"text-black text-3xl absolute right-0 top-8 pr-5",
 							{ "!text-white": isOpen }
 						)}>
 						<FiMenu />
@@ -130,18 +120,32 @@ const Navbar: React.FC = () => {
 				ref={mobileMenuRef}
 				id="mobile-menu"
 				className={clsx(
-					"hidden absolute top-0 -right-[400%] bg-black h-screen w-[60%] justify-center z-40 transition-all ease-in  duration-[400ms]",
-					{ "!flex !right-0": isOpen }
+					"fixed top-0 flex items-center justify-center right-0 bg-emerald-500 h-screen w-[60%] z-40 transition-transform ease-in-out duration-400 transform",
+					{
+						"translate-x-full": !isOpen,
+						"translate-x-0": isOpen,
+					}
 				)}>
-				<nav className="text-white leading-loose tracking-wide text-xl flex flex-col items-center justify-center gap-7 ">
-					<a href="/">Home</a>
-					<a href="/">About</a>
-					<a href="/">Contact</a>
-					<a href="/">Agents</a>
-					<a href="/">Sign in</a>
+				<nav className="text-white leading-loose tracking-wide text-2xl flex flex-col items-center justify-center gap-7  ">
 					<a
-						href="/"
-						className="">
+						className="hover:underline"
+						href="/">
+						Home
+					</a>
+					<a
+						className="hover:underline"
+						href="/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
+						Buy
+					</a>
+					<a
+						className="hover:underline"
+						href="/list?type=rent&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
+						Rent
+					</a>
+
+					<a
+						className="hover:underline"
+						href="/register">
 						Sign up
 					</a>
 				</nav>

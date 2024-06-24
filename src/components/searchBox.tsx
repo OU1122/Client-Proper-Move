@@ -52,7 +52,7 @@ const SearchBox: React.FC = () => {
 				<div className="relative flex flex-col gap-1 justify-start md:flex-row bg-white w-full">
 					<input
 						onChange={handleChange}
-						className="border-r-0 border-b-2 sm:border-b-0 py-3 pl-7 w-2/4"
+						className="border-r-0 border-b-2 sm:border-b-0 py-3 pl-7 w-full md:w-2/4"
 						type="text"
 						name="city"
 						placeholder={
@@ -62,7 +62,7 @@ const SearchBox: React.FC = () => {
 						}></input>
 					<input
 						onChange={handleChange}
-						className="border-r-0 border-b-2 sm:border-b-0  py-3 pl-7 w-1/4"
+						className="border-r-0 border-b-2 sm:border-b-0  py-3 pl-7 w-full md:w-1/4"
 						type="number"
 						name="minPrice"
 						min={0}
@@ -70,7 +70,7 @@ const SearchBox: React.FC = () => {
 						placeholder="Min Price"></input>
 					<input
 						onChange={handleChange}
-						className=" py-3  pl-7 w-1/4 "
+						className=" py-3  pl-7 w-full md:w-1/4 "
 						type="number"
 						name="maxPrice"
 						min={0}

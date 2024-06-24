@@ -26,7 +26,7 @@ const Register: React.FC = () => {
 				email,
 				password,
 			});
-			console.log(res.data);
+
 			setErr(null);
 			navigate("/login");
 		} catch (error) {
@@ -87,7 +87,9 @@ const Register: React.FC = () => {
 					</form>
 					{err && <span className="text-red-400">{err}</span>}
 					<p className="underline text-slate-400">
-						<Link to="/login">Already have an account?</Link>
+						<Link to="/login">
+							<span className="underline">Already have an account?</span>
+						</Link>
 					</p>
 				</div>
 			</div>
