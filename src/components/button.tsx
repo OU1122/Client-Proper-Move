@@ -20,7 +20,7 @@ export default function Button({
 		return (
 			<Link
 				to={to}
-				className="leading-loose  bg-emerald-500 text-white hover:bg-emerald-600 hover:shadow-md ease-in px-4 py-2  transition-all rounded-lg">
+				className="leading-loose  bg-emerald-500 text-white hover:bg-emerald-600 hover:shadow-md ease-in px-4 min-w-fit py-2  transition-all rounded-lg">
 				{children}
 			</Link>
 		);

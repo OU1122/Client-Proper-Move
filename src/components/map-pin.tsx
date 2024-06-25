@@ -1,9 +1,10 @@
 import { Marker, Popup } from "react-leaflet";
+import { numberFormatter } from "../lib/numberFormatter";
 
 interface Item {
 	id: number;
 	title: string;
-	img?: string;
+	images?: string[];
 	bedroom?: number;
 	bathroom: number;
 	price: number;
@@ -18,18 +19,24 @@ export const MapPin: React.FC<{ item: Item }> = ({ item }) => {
 			{
 				<Popup>
 					<div className="flex flex-row gap-5 w-fit">
-						{item.img && (
+						{item.images && (
 							<img
 								className="w-[64px] h-[48[px]] object-cover"
-								src={item.img}></img>
+								src={item.images[0]}></img>
 						)}
 
 						<div className="flex flex-col justify-between">
 							<span className="inline-block font-semibold">
 								{item.title}
 							</span>
-							<span>{item.bedroom}</span>
-							<span>${item.price}</span>
+							<span>
+								{item.bedroom === 1 ? (
+									<span>{item.bedroom} bedroom</span>
+								) : (
+									<span>{item.bedroom} bedrooms</span>
+								)}
+							</span>
+							<span>{numberFormatter.format(item.price)}</span>
 						</div>
 					</div>
 				</Popup>

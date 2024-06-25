@@ -105,7 +105,7 @@ const UpdateProfile: React.FC = () => {
 			<div className=" md:relative  h-full md:h-auto md:w-[40%] flex items-center justify-center ">
 				<div className="md:relative pb-5 flex items-center justify-center flex-col gap-4 mb-5 md:mb-0">
 					<img
-						className="w-[100px] h-[100px] md:w-[200px] md:h-[200px] md:mb-0  rounded-full md:translate-x-16 object-cover"
+						className="w-[100px] h-[100px] md:w-[200px] md:h-[200px] md:mb-0  rounded-full md:translate-x-16 object-cover border-2 border-emerald-600 border-opacity-50"
 						src={currentUser!.avatar || "/avatar.jpg"}></img>
 					<div className="bottom-4 left-[90px] md:-bottom-[75px]  md:translate-x-16">
 						<UploadWidget

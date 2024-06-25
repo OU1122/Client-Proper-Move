@@ -23,7 +23,7 @@ const ListPage: React.FC = () => {
 				</div>
 			</div>
 			<div className="pl-2 right hidden sm:block sm:w-[35%] mt-8">
-				<Map items={data} />
+				<Map items={posts} />
 			</div>
 		</div>
 	);

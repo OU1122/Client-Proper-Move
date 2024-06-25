@@ -69,14 +69,19 @@ export const Card: React.FC<{ post: Item }> = ({ post }) => {
 						</div>
 						<div className="flex items-center gap-2 flex-wrap">
 							<span className="border border-slate-400  p-1 rounded-md cursor-pointer hover:bg-slate-100">
-								<img
-									className="w-4 h-4 text-slate-100 "
-									src="/save.png"></img>
+								<Link to={`/${post.id}`}>
+									<img
+										className="w-4 h-4 text-slate-100 "
+										src="/save.png"></img>
+								</Link>
 							</span>
+
 							<span className="border border-slate-400 p-1 rounded-md cursor-pointer hover:bg-slate-100">
-								<img
-									className="w-4 h-4 text-slate-100 "
-									src="/chat.png "></img>
+								<Link to={`/${post.id}`}>
+									<img
+										className="w-4 h-4 text-slate-100 "
+										src="/chat.png "></img>
+								</Link>
 							</span>
 						</div>
 					</div>

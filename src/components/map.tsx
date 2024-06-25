@@ -5,7 +5,7 @@ import { MapPin } from "./map-pin";
 interface Item {
 	id: number;
 	title: string;
-	img?: string;
+	images?: string[];
 	bedroom?: number;
 	bathroom: number;
 	price: number;
@@ -15,14 +15,15 @@ interface Item {
 }
 
 export const Map: React.FC<{ items: Item[] }> = ({ items }) => {
+	console.log(items);
 	return (
 		<MapContainer
 			center={
 				items.length === 1
 					? [items[0].latitude, items[0].longitude]
-					: [52.479, -1.9026]
+					: [51.509113, -0.15419]
 			}
-			zoom={7}
+			zoom={9}
 			scrollWheelZoom={false}
 			className="map z-0">
 			<TileLayer

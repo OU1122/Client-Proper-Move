@@ -5,7 +5,7 @@ export const Filter: React.FC = () => {
 	const [searchParams, setSearchParams] = useSearchParams("");
 
 	const [query, setQuery] = useState({
-		type: searchParams.get("type") || "buy",
+		type: searchParams.get("type") || "",
 		city: searchParams.get("city") || "",
 		property: searchParams.get("property") || "apartment",
 		minPrice: searchParams.get("minPrice") || 0,
@@ -57,9 +57,17 @@ export const Filter: React.FC = () => {
 						id="type"
 						name="type"
 						onChange={handleChange}
-						defaultValue={query.type ?? "buy"}>
-						<option value="buy">Buy</option>
-						<option value="rent">Rent</option>
+						defaultValue={query.type ?? ""}>
+						<option
+							value="buy"
+							selected={searchParams.get("type") === "buy"}>
+							Buy
+						</option>
+						<option
+							value="rent"
+							selected={searchParams.get("type") === "rent"}>
+							Rent
+						</option>
 					</select>
 				</div>
 				<div className="flex flex-col basis-1/5">

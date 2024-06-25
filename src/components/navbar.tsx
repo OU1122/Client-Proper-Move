@@ -37,7 +37,7 @@ const Navbar: React.FC = () => {
 	};
 
 	return (
-		<nav className="relative flex justify-between items-center py-6 font-normal transition-all ease-in  text-xl ">
+		<nav className="relative flex justify-between items-center py-6 px-2 font-normal transition-all ease-in  text-xl ">
 			<div className="left flex">
 				<div className="flex items-center justify-center">
 					<Link to="/">
