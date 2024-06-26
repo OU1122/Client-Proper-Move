@@ -1,15 +1,16 @@
 import Card from "../components/card";
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+
 import apiRequest from "../lib/apiRequest";
-import { AuthContext } from "../context/authContext";
 import Button from "../components/button";
+import useAuth from "../lib/useAuth";
+import { ProfilePostsResponse } from "../lib/types";
 
 const ProfilePage: React.FC = () => {
 	const navigate = useNavigate();
-	const [chatIsOpen, setChatIsOpen] = useState<null | true>(null);
-	const { currentUser, updateUser } = useContext(AuthContext);
-	const userPosts = useLoaderData();
+
+	const { currentUser, updateUser } = useAuth();
+	const userPosts = useLoaderData() as ProfilePostsResponse;
 
 	const handleLogout = async () => {
 		try {
@@ -70,7 +71,7 @@ const ProfilePage: React.FC = () => {
 					<div className="flex flex-row justify-between items-center flex-wrap gap-4 lg:gap-0">
 						<h2 className="text-xl ">User Information</h2>
 						<div className="flex justify-between items-center flex-wrap">
-							<Button to={`/update-profile/${currentUser.id}`}>
+							<Button to={`/update-profile/${currentUser?.id}`}>
 								Update Profile
 							</Button>
 						</div>
@@ -81,18 +82,18 @@ const ProfilePage: React.FC = () => {
 								<h2 className="text-sm">Avatar:</h2>
 								<img
 									className="w-8 h-8 rounded-full object-cover"
-									src={currentUser.avatar || "/avatar.jpg"}></img>
+									src={currentUser?.avatar || "/avatar.jpg"}></img>
 							</div>
 							<div className="flex flex-row gap-2 py-1 ">
 								<h2 className="text-sm">Username:</h2>
 								<span className="font-semibold text-sm">
-									{currentUser.username}
+									{currentUser?.username}
 								</span>
 							</div>
 							<div className="flex flex-row gap-2 py-1">
 								<h2 className="text-sm">E-mail:</h2>
 								<span className="font-semibold text-sm">
-									{currentUser.email}
+									{currentUser?.email}
 								</span>
 							</div>
 						</div>

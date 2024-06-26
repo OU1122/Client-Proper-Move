@@ -1,4 +1,5 @@
 import apiRequest from "./apiRequest";
+import { ProfilePostsResponse } from "./types";
 
 export const singlePageLoader = async ({ request, params }) => {
 	const res = await apiRequest("/posts/" + params.id);
@@ -14,7 +15,7 @@ export const listPageLoader = async ({ request, params }) => {
 	return res.data;
 };
 
-export const profilePageLoader = async () => {
+export const profilePageLoader = async (): Promise<ProfilePostsResponse> => {
 	const res = await apiRequest("/user/profilePosts");
 
 	return res.data;

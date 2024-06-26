@@ -1,19 +1,8 @@
 import { Link } from "react-router-dom";
 import { numberFormatter } from "../lib/numberFormatter";
+import { CardItem } from "../lib/types";
 
-interface Item {
-	id: number;
-	title: string;
-	images: string[];
-	bedroom: number;
-	bathroom: number;
-	price: number;
-	address: string;
-	latitude: number;
-	longitude: number;
-}
-
-export const Card: React.FC<{ post: Item }> = ({ post }) => {
+export const Card: React.FC<{ post: CardItem }> = ({ post }) => {
 	return (
 		<div className="flex flex-col sm:flex-row gap-2">
 			<div className="left flex grow w-full sm:w-[40%] shadow-lg shadow-zinc-100">
