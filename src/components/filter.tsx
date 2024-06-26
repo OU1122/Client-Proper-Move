@@ -1,10 +1,11 @@
 import { useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams as useReactRouterSearchParams } from "react-router-dom";
+import { SearchParams } from "../lib/types";
 
 export const Filter: React.FC = () => {
-	const [searchParams, setSearchParams] = useSearchParams("");
+	const [searchParams, setSearchParams] = useReactRouterSearchParams();
 
-	const [query, setQuery] = useState({
+	const [query, setQuery] = useState<SearchParams>({
 		type: searchParams.get("type") || "",
 		city: searchParams.get("city") || "",
 		property: searchParams.get("property") || "apartment",
@@ -13,12 +14,22 @@ export const Filter: React.FC = () => {
 		bedroom: searchParams.get("bedroom") || 1,
 	});
 
-	const handleChange = (e) => {
+	const handleChange = (
+		e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+	) => {
 		setQuery({ ...query, [e.target.name]: e.target.value });
 	};
 
 	const handleFilter = () => {
-		setSearchParams(query);
+		const params = new URLSearchParams({
+			type: query.type,
+			city: query.city,
+			property: query.property,
+			minPrice: query.minPrice.toString(),
+			maxPrice: query.maxPrice.toString(),
+			bedroom: query.bedroom.toString(),
+		});
+		setSearchParams(params.toString());
 	};
 
 	return (

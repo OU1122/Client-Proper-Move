@@ -36,3 +36,12 @@ export interface CardItem {
 	type?: string;
 	userId?: string;
 }
+
+export interface SearchParams {
+	type: string;
+	city: string;
+	property: string;
+	minPrice: number | string;
+	maxPrice: number | string;
+	bedroom: number | string;
+}
