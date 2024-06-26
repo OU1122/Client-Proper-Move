@@ -1,17 +1,17 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { Map } from "../components/map";
 import { Slider } from "../components/slider";
-
+import useAuth from "../lib/useAuth";
 import DOMPurify from "dompurify";
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/authContext";
+import { useState } from "react";
+
 import apiRequest from "../lib/apiRequest";
 import Modal from "../components/modal";
 import React from "react";
 import { numberFormatter } from "../lib/numberFormatter";
 
 const SinglePage: React.FC = () => {
-	const { currentUser } = useContext(AuthContext);
+	const { currentUser } = useAuth();
 	const post = useLoaderData();
 	const navigate = useNavigate();
 	const [isSaved, setIsSaved] = useState(post.isSaved);

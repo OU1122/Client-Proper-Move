@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 interface User {
 	id: string;
@@ -7,9 +7,9 @@ interface User {
 	avatar: string;
 }
 
-interface AuthContextType {
+export interface AuthContextType {
 	currentUser: User | null;
-	updateUser: React.Dispatch<React.SetStateAction<User | null>>;
+	updateUser: (data: User | null) => void;
 }
 
 export const AuthContext = createContext<AuthContextType | undefined>(
@@ -23,7 +23,7 @@ interface AuthContextProviderProps {
 export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 	children,
 }) => {
-	const [currentUser, setCurrentUser] = useState<string | null>(
+	const [currentUser, setCurrentUser] = useState<User | null>(
 		JSON.parse(localStorage.getItem("userData") || "null") || null
 	);
 
