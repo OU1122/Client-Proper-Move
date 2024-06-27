@@ -1,12 +1,5 @@
 import { Link } from "react-router-dom";
-
-type ButtonProps = {
-	onClick?: () => void;
-	children: React.ReactNode;
-	disabled?: boolean;
-	to?: string;
-	images?: string[];
-} & React.ComponentPropsWithoutRef<"button">;
+import { ButtonProps } from "../lib/types";
 
 export default function Button({
 	onClick,

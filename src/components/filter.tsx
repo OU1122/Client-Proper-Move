@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSearchParams as useReactRouterSearchParams } from "react-router-dom";
 import { SearchParams } from "../lib/types";
+import BackButton from "./backButton";
 
 export const Filter: React.FC = () => {
 	const [searchParams, setSearchParams] = useReactRouterSearchParams();
@@ -17,7 +18,8 @@ export const Filter: React.FC = () => {
 	const handleChange = (
 		e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
 	) => {
-		setQuery({ ...query, [e.target.name]: e.target.value });
+		const { name, value } = e.target;
+		setQuery({ ...query, [name]: value });
 	};
 
 	const handleFilter = () => {
@@ -33,7 +35,7 @@ export const Filter: React.FC = () => {
 	};
 
 	return (
-		<div className="my-8">
+		<div className="my-4">
 			<h1 className="text-xl">
 				Search results{" "}
 				<span className="font-bold">{searchParams.get("city")}</span>

@@ -2,12 +2,11 @@ import { useLoaderData } from "react-router-dom";
 import Card from "../components/card.tsx";
 import Filter from "../components/filter.tsx";
 import { Map } from "../components/map.tsx";
-import { listData } from "../lib/list-data.tsx";
+import { Post } from "../lib/types.ts";
 
 const ListPage: React.FC = () => {
-	const data = listData;
-	const posts = useLoaderData();
-
+	const posts = useLoaderData() as Post[];
+	console.log(posts);
 	return (
 		<div className="flex flex-col md:flex-row w-full h-[calc(100%-96px)] pb-5">
 			<div className="flex flex-col left w-full md:w-[65%] pr-2">

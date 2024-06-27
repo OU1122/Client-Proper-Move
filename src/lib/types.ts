@@ -45,3 +45,28 @@ export interface SearchParams {
 	maxPrice: number | string;
 	bedroom: number | string;
 }
+
+export type ButtonProps = {
+	onClick?: () => void;
+	children: React.ReactNode;
+	disabled?: boolean;
+	to?: string;
+	images?: string[];
+} & React.ComponentPropsWithoutRef<"button">;
+
+export interface MapItem {
+	id: string;
+	title: string;
+	price: number;
+	images: string[];
+	address: string;
+	city: string;
+	bedroom: number;
+	bathroom: number;
+	latitude: string;
+	longitude: string;
+	type: string;
+	property: string;
+	createdAt: string;
+	userId: string;
+}

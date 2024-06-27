@@ -1,26 +1,17 @@
 import { MapContainer, TileLayer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { MapPin } from "./map-pin";
+import { MapItem } from "../lib/types";
 
-interface Item {
-	id: number;
-	title: string;
-	images?: string[];
-	bedroom?: number;
-	bathroom: number;
-	price: number;
-	address: string;
-	latitude: number;
-	longitude: number;
-}
+export const Map: React.FC<{ items: MapItem[] }> = ({ items }) => {
+	const convertedLatitude = parseFloat(items[0].latitude);
+	const convertedLongitude = parseFloat(items[0].longitude);
 
-export const Map: React.FC<{ items: Item[] }> = ({ items }) => {
-	console.log(items);
 	return (
 		<MapContainer
 			center={
 				items.length === 1
-					? [items[0].latitude, items[0].longitude]
+					? [convertedLatitude, convertedLongitude]
 					: [51.509113, -0.15419]
 			}
 			zoom={9}

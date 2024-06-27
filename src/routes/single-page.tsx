@@ -9,6 +9,7 @@ import apiRequest from "../lib/apiRequest";
 import Modal from "../components/modal";
 import React from "react";
 import { numberFormatter } from "../lib/numberFormatter";
+import BackButton from "../components/backButton";
 
 const SinglePage: React.FC = () => {
 	const { currentUser } = useAuth();
@@ -34,6 +35,7 @@ const SinglePage: React.FC = () => {
 	return (
 		<div className="flex w-full flex-col md:flex-row h-[calc(100%-96px)] px-5">
 			<div className="left md:w-[65%] pr-2">
+				<BackButton />
 				<Slider data={post} />
 
 				<div className="flex flex-row justify-between mt-10">
