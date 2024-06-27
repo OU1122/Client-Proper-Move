@@ -1,29 +1,14 @@
 import { useState } from "react";
 
-interface data {
-	id: number;
-	title: string;
-	price: number;
-	images: string[];
-	bedRooms: number;
-	bathroom: number;
-	size: number;
-	latitude: number;
-	longitude: number;
-	city: string;
-	address: string;
-	school: string;
-	bus: string;
-	restaurant: string;
-	description: string;
-}
-
-export const Slider: React.FC<{ data: data }> = ({ data }) => {
-	const { images } = data;
+export const Slider: React.FC<{ data: string[] }> = ({ data }) => {
+	const images = data;
 
 	const [sliderImage, setSliderImage] = useState<number | null>(null);
 
 	const changeImage = (direction: "left" | "right"): void => {
+		if (sliderImage === null) {
+			return;
+		}
 		if (direction === "left") {
 			if (sliderImage === 0) {
 				setSliderImage(images.length - 1);

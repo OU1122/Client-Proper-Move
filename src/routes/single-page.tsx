@@ -4,16 +4,16 @@ import { Slider } from "../components/slider";
 import useAuth from "../lib/useAuth";
 import DOMPurify from "dompurify";
 import { useState } from "react";
-
 import apiRequest from "../lib/apiRequest";
 import Modal from "../components/modal";
 import React from "react";
 import { numberFormatter } from "../lib/numberFormatter";
 import BackButton from "../components/backButton";
+import { SinglePagePost } from "../lib/types";
 
 const SinglePage: React.FC = () => {
 	const { currentUser } = useAuth();
-	const post = useLoaderData();
+	const post = useLoaderData() as SinglePagePost;
 	const navigate = useNavigate();
 	const [isSaved, setIsSaved] = useState(post.isSaved);
 	const [open, setOpen] = React.useState(false);
@@ -36,7 +36,7 @@ const SinglePage: React.FC = () => {
 		<div className="flex w-full flex-col md:flex-row h-[calc(100%-96px)] px-5">
 			<div className="left md:w-[65%] pr-2">
 				<BackButton />
-				<Slider data={post} />
+				<Slider data={post.images} />
 
 				<div className="flex flex-row justify-between mt-10">
 					<div className="flex flex-col justify-between gap-4">
@@ -123,7 +123,9 @@ const SinglePage: React.FC = () => {
 							<img
 								className="w-6 h-6"
 								src="/size.png"></img>
-							<p>{post.postDetail.size}</p>
+							<p>
+								{post.postDetail.size} m<sup>2</sup>
+							</p>
 						</div>
 						<div className="flex flex-row px-2 py-2 items-center gap-1  bg-white rounded-lg">
 							<img
