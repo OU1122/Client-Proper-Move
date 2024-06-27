@@ -37,7 +37,7 @@ export interface SinglePagePost {
 interface PostDetail {
 	id: string;
 	desc: string;
-	utilites: string;
+	utilities: string;
 	pet: string;
 	income: string;
 	size: number;

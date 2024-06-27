@@ -1,29 +1,24 @@
 import { Marker, Popup } from "react-leaflet";
 import { numberFormatter } from "../lib/numberFormatter";
+import { MapItem } from "../lib/types";
+import { Link } from "react-router-dom";
 
-interface Item {
-	id: number;
-	title: string;
-	images?: string[];
-	bedroom?: number;
-	bathroom: number;
-	price: number;
-	address: string;
-	latitude: number;
-	longitude: number;
-}
-
-export const MapPin: React.FC<{ item: Item }> = ({ item }) => {
+export const MapPin: React.FC<{ item: MapItem }> = ({ item }) => {
+	const latitude = parseFloat(item.latitude);
+	const longitude = parseFloat(item.longitude);
 	return (
-		<Marker position={[item.latitude, item.longitude]}>
+		<Marker position={[latitude, longitude]}>
 			{
 				<Popup>
 					<div className="flex flex-row gap-5 w-fit">
-						{item.images && (
-							<img
-								className="w-[64px] h-[48[px]] object-cover"
-								src={item.images[0]}></img>
-						)}
+						<Link to={`/${item.id}`}>
+							{" "}
+							{item.images && (
+								<img
+									className="w-[60px] h-[60px] object-cover"
+									src={item.images[0]}></img>
+							)}
+						</Link>
 
 						<div className="flex flex-col justify-between">
 							<span className="inline-block font-semibold">

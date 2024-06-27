@@ -9,23 +9,25 @@ export const Slider: React.FC<{ data: string[] }> = ({ data }) => {
 		if (sliderImage === null) {
 			return;
 		}
-		if (direction === "left") {
-			if (sliderImage === 0) {
-				setSliderImage(images.length - 1);
-			} else {
-				setSliderImage((prev) => prev - 1);
-			}
-		}
 
-		if (direction === "right") {
-			if (sliderImage === images.length - 1) {
-				setSliderImage(0);
-			} else {
-				setSliderImage((prev) => prev + 1);
+		setSliderImage((prev) => {
+			if (prev === null) {
+				return null;
 			}
-		}
+
+			if (direction === "left") {
+				return prev === 0 ? images.length - 1 : prev - 1;
+			} else if (direction === "right") {
+				return prev === images.length - 1 ? 0 : prev + 1;
+			}
+
+			return prev;
+		});
 	};
 
+	const handleClose = () => {
+		setSliderImage(null);
+	};
 	return (
 		<>
 			{sliderImage !== null && (
@@ -49,8 +51,8 @@ export const Slider: React.FC<{ data: string[] }> = ({ data }) => {
 							src="/arrow.png"
 						/>
 						<div
-							className="absolute top-16 right-[75px] text-4xl text-white cursor-pointer"
-							onClick={() => setSliderImage(null)}>
+							className="absolute top-16 right-[75px] text-4xl text-white cursor-pointer p-2 hover:bg-slate-800 rounded-lg transition-all ease-in"
+							onClick={handleClose}>
 							X
 						</div>
 					</div>

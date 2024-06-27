@@ -1,14 +1,23 @@
+import { AxiosRequestConfig } from "axios";
 import apiRequest from "./apiRequest";
 import { ProfilePostsResponse } from "./types";
 
-export const singlePageLoader = async ({ request, params }) => {
+export const singlePageLoader = async ({
+	params,
+}: {
+	params: { id: string };
+}) => {
 	const res = await apiRequest("/posts/" + params.id);
 
 	return res.data;
 };
 
-export const listPageLoader = async ({ request, params }) => {
-	const query = request.url.split("?")[1];
+export const listPageLoader = async ({
+	request,
+}: {
+	request: AxiosRequestConfig;
+}) => {
+	const query = request?.url?.split("?")[1];
 
 	const res = await apiRequest("/posts?" + query);
 
