@@ -10,42 +10,41 @@ const NewPost: React.FC = () => {
 	const [value, setValue] = useState<string>("");
 	const [images, setImages] = useState<string[]>([]);
 	const [error, setError] = useState<string | null>(null);
-	const [status, setStatus] = useState<string | null>(null);
 
 	const navigate = useNavigate();
 
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
-		setStatus(null);
+		setError(null);
 
 		//EXTRACT FORM INPUTS
 		const formData = new FormData(e.currentTarget);
 		const inputs = Object.fromEntries(formData);
-
+		console.log(inputs);
 		try {
 			const res = await apiRequest.post("/posts", {
 				postData: {
-					title: inputs.title,
-					price: parseInt(inputs.price),
+					title: inputs.title as string,
+					price: parseInt(inputs.price as string),
 					address: inputs.address,
 					city: inputs.city,
-					bedroom: parseInt(inputs.bedrooms),
-					bathroom: parseInt(inputs.bathrooms),
+					bedroom: parseInt(inputs.bedrooms as string),
+					bathroom: parseInt(inputs.bathrooms as string),
 					images: images,
 					type: inputs.type,
 					property: inputs.property,
-					latitude: parseInt(inputs.latitude),
-					longitude: parseInt(inputs.longitude),
+					latitude: parseInt(inputs.latitude as string),
+					longitude: parseInt(inputs.longitude as string),
 				},
 				postDetail: {
 					desc: value,
 					utilities: inputs.utilities,
 					pet: inputs.pet,
 					income: inputs.income,
-					size: parseInt(inputs.size),
-					school: parseInt(inputs.school),
-					bus: parseInt(inputs.bus),
-					restaurant: parseInt(inputs.restaurant),
+					size: parseInt(inputs.size as string),
+					school: parseInt(inputs.school as string),
+					bus: parseInt(inputs.bus as string),
+					restaurant: parseInt(inputs.restaurant as string),
 				},
 			});
 			navigate("/" + res.data.id);
@@ -69,7 +68,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="title"
-									className="text-sm">
+									className="text-xs">
 									Title
 								</label>
 								<input
@@ -82,7 +81,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="price"
-									className="text-sm">
+									className="text-xs">
 									Price
 								</label>
 								<input
@@ -96,7 +95,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="address"
-									className="text-sm">
+									className="text-xs">
 									Address
 								</label>
 								<input
@@ -119,7 +118,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="city"
-									className="text-sm">
+									className="text-xs">
 									City
 								</label>
 								<input
@@ -132,7 +131,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="bedrooms"
-									className="text-sm">
+									className="text-xs">
 									Number of Bedrooms
 								</label>
 								<input
@@ -147,7 +146,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="bathrooms"
-									className="text-sm">
+									className="text-xs">
 									Number of Bathrooms
 								</label>
 								<input
@@ -164,7 +163,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="type"
-									className="text-sm">
+									className="text-xs">
 									Type
 								</label>
 								<select
@@ -178,7 +177,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="latitude"
-									className="text-sm">
+									className="text-xs">
 									Latitude
 								</label>
 								<input
@@ -192,7 +191,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="longitude"
-									className="text-sm">
+									className="text-xs">
 									Longitude
 								</label>
 								<input
@@ -207,7 +206,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="property"
-									className="text-sm">
+									className="text-xs">
 									Property
 								</label>
 								<select
@@ -223,7 +222,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="utilities"
-									className="text-sm">
+									className="text-xs">
 									Utilities Policy
 								</label>
 								<select
@@ -238,7 +237,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="pet"
-									className="text-sm">
+									className="text-xs">
 									Pets
 								</label>
 								<select
@@ -254,7 +253,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="income"
-									className="text-sm">
+									className="text-xs">
 									Income Policy
 								</label>
 								<input
@@ -267,7 +266,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="size"
-									className="text-sm">
+									className="text-xs">
 									Total Size (m²)
 								</label>
 								<input
@@ -281,7 +280,7 @@ const NewPost: React.FC = () => {
 							<div className="flex flex-col">
 								<label
 									htmlFor="school"
-									className="text-sm">
+									className="text-xs">
 									School Distance (meters)
 								</label>
 								<input
@@ -292,11 +291,11 @@ const NewPost: React.FC = () => {
 									placeholder=""></input>
 							</div>
 						</div>
-						<div className="gap-2 grid grid-cols-3">
+						<div className="gap-2 grid grid-cols-3 ">
 							<div className="flex flex-col">
 								<label
 									htmlFor="restaurant"
-									className="text-sm">
+									className="text-xs">
 									Closest Restaurant (meters)
 								</label>
 								<input
@@ -306,10 +305,10 @@ const NewPost: React.FC = () => {
 									type="number"
 									placeholder=""></input>
 							</div>
-							<div className="flex flex-col">
+							<div className="flex flex-col ">
 								<label
 									htmlFor="bus"
-									className="text-sm">
+									className="text-xs">
 									Bus Stop Distance (meters)
 								</label>
 								<input
@@ -319,12 +318,14 @@ const NewPost: React.FC = () => {
 									type="number"
 									placeholder=""></input>
 							</div>
-							<Button
-								disabled={images.length < 1 ? true : false}
-								images={images}
-								type="submit">
-								Add Listing
-							</Button>
+							<div className="flex items-end justify-center">
+								<Button
+									disabled={images.length < 1 ? true : false}
+									images={images}
+									type="submit">
+									Add Listing
+								</Button>
+							</div>
 							{/* <button
 								disabled={images.length < 1 ? true : false}
 								type="submit"

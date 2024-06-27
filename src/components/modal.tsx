@@ -2,9 +2,10 @@ import { Modal as BaseModal } from "@mui/base/Modal";
 import Fade from "@mui/material/Fade";
 import { Button } from "@mui/base/Button";
 import { styled, css } from "@mui/system";
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
-import { AuthContext } from "../context/authContext";
+
+import useAuth from "../lib/useAuth";
 
 export default function TransitionsModal({
 	handleOpen,
@@ -12,7 +13,7 @@ export default function TransitionsModal({
 	open,
 	post,
 }) {
-	const { currentUser } = useContext(AuthContext);
+	const { currentUser } = useAuth();
 	const [status, setStatus] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
 	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -25,7 +26,7 @@ export default function TransitionsModal({
 
 		const templateParams = {
 			to_name: `${post.user.username}`,
-			from_name: `${currentUser.email}`,
+			from_name: `${currentUser?.email}`,
 			message,
 		};
 
@@ -157,7 +158,7 @@ const StyledBackdrop = styled(Backdrop)`
 `;
 
 const style = {
-	position: "absolute" as "absolute",
+	position: "absolute" as const,
 	top: "50%",
 	left: "50%",
 	transform: "translate(-50%, -50%)",

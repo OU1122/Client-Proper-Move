@@ -1,22 +1,18 @@
-import { AxiosRequestConfig } from "axios";
 import apiRequest from "./apiRequest";
-import { ProfilePostsResponse } from "./types";
+import { ProfilePostsResponse, SinglePagePost, Post } from "./types";
+import { LoaderFunctionArgs } from "react-router-dom";
 
-export const singlePageLoader = async ({
-	params,
-}: {
-	params: { id: string };
-}) => {
+export const singlePageLoader: (
+	args: LoaderFunctionArgs<{ id: string }>
+) => Promise<SinglePagePost> = async ({ params }) => {
 	const res = await apiRequest("/posts/" + params.id);
 
 	return res.data;
 };
 
-export const listPageLoader = async ({
-	request,
-}: {
-	request: AxiosRequestConfig;
-}) => {
+export const listPageLoader: (
+	args: LoaderFunctionArgs<{ request: { url: string } }>
+) => Promise<Post[]> = async ({ request }) => {
 	const query = request?.url?.split("?")[1];
 
 	const res = await apiRequest("/posts?" + query);

@@ -48,13 +48,13 @@ const SinglePage: React.FC = () => {
 							/>
 							<span className="text-slate-500">{post.address}</span>
 						</div>
-						<span className="bg-yellow-200 rounded-md px-1 text-lg w-fit">
+						<span className="bg-[#f2f6f2] rounded-md px-1 text-lg w-fit">
 							{numberFormatter.format(post.price)}
 						</span>
 					</div>
 
 					<div className="flex items-center justify-center flex-col gap-1 ">
-						<div className="p-3 flex items-center flex-col bg-yellow-100 rounded-lg">
+						<div className="p-3 flex items-center flex-col bg-[#f2f6f2]  rounded-lg">
 							<img
 								className="h-12 w-12 rounded-full object-cover"
 								src={post.user.avatar || "/avatar.jpg"}

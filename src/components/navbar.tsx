@@ -1,14 +1,15 @@
-import React, { useState, useRef, useEffect, useContext } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FiMenu } from "react-icons/fi";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../context/authContext";
+
+import useAuth from "../lib/useAuth";
 
 const Navbar: React.FC = () => {
 	const mobileMenuRef = useRef<HTMLDivElement | null>(null);
 	const [isOpen, setIsOpen] = useState<false | true>(false);
 
-	const { currentUser } = useContext(AuthContext);
+	const { currentUser } = useAuth();
 
 	const handleClickOutside = (event: MouseEvent) => {
 		if (

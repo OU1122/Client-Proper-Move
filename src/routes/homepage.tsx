@@ -1,12 +1,8 @@
-import { useContext } from "react";
 import SearchBox from "../components/searchBox";
-import { AuthContext } from "../context/authContext";
 import ShapedImage from "../components/shapedImage";
 import { Link } from "react-router-dom";
 
 const HomePage: React.FC = () => {
-	const { currentUser } = useContext(AuthContext);
-
 	return (
 		<div className="relative flex flex-col-reverse md:flex-row m-5 sm:m-6  ">
 			<div className="text-div w-full md:w-[60%] md:pr-[50px] mt-[150px] md:mt-0">

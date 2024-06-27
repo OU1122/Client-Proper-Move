@@ -34,7 +34,7 @@ export const Card: React.FC<{ post: CardItem }> = ({ post }) => {
 						</span>
 					</div>
 					<div>
-						<span className="bg-emerald-100 rounded-md px-1 text-lg">
+						<span className="bg-slate-100 rounded-md px-1 text-lg">
 							{numberFormatter.format(post.price)}
 						</span>
 					</div>

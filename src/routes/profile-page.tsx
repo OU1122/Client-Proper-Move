@@ -36,7 +36,9 @@ const ProfilePage: React.FC = () => {
 				</div>
 				<div className="wrapper flex flex-col pr-[10px] gap-5 overflow-y-scroll ">
 					{userPosts.userPosts.length === 0 ? (
-						<h2>Your property listings will show here.</h2>
+						<h2 className="text-xl">
+							Your added property listings will show here.
+						</h2>
 					) : (
 						userPosts.userPosts.map((item) => (
 							<Card

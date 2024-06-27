@@ -1,7 +1,6 @@
 import { Navigate, Outlet } from "react-router-dom";
 import Navbar from "../components/navbar";
-import { AuthContext } from "../context/authContext";
-import { useContext } from "react";
+import useAuth from "../lib/useAuth";
 
 const Layout: React.FC = () => {
 	return (
@@ -13,7 +12,7 @@ const Layout: React.FC = () => {
 };
 
 const RequireAuth: React.FC = () => {
-	const { currentUser } = useContext(AuthContext);
+	const currentUser = useAuth();
 
 	return !currentUser ? (
 		<Navigate to="/login" />

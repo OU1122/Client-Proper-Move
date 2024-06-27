@@ -6,7 +6,7 @@ import { Post } from "../lib/types.ts";
 
 const ListPage: React.FC = () => {
 	const posts = useLoaderData() as Post[];
-	console.log(posts);
+
 	return (
 		<div className="flex flex-col md:flex-row w-full h-[calc(100%-96px)] pb-5">
 			<div className="flex flex-col left w-full md:w-[65%] pr-2">

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { useSearchParams as useReactRouterSearchParams } from "react-router-dom";
 import { SearchParams } from "../lib/types";
-import BackButton from "./backButton";
 
 export const Filter: React.FC = () => {
 	const [searchParams, setSearchParams] = useReactRouterSearchParams();
