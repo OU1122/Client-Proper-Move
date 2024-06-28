@@ -1,26 +1,21 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../lib/apiRequest";
-import axios, { AxiosError } from "axios";
-import { AuthContext } from "../context/authContext";
 import Button from "../components/button";
+import useAuth from "../lib/useAuth";
 
 const Login: React.FC = () => {
-	const [err, setErr] = useState(null);
+	const [err, setErr] = useState<string | null>(null);
 	const [isLoading, setIsLoading] = useState<boolean>(false);
 	const navigate = useNavigate();
 	const [inputType, setInputType] = useState("password");
-	const { updateUser } = useContext(AuthContext);
+	const { updateUser } = useAuth();
 
-	function isAxiosError(error: unknown): error is AxiosError {
-		return axios.isAxiosError(error);
-	}
-
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		setIsLoading(true);
 		setErr(null);
-		const formData = new FormData(e.target);
+		const formData = new FormData(e.currentTarget);
 		const username = formData.get("username");
 		const password = formData.get("password");
 
@@ -39,8 +34,12 @@ const Login: React.FC = () => {
 
 			navigate("/");
 		} catch (error) {
-			console.log(error);
-			setErr(error.response.data.message);
+			if (error instanceof Error) {
+				console.log(error);
+				setErr(error.message);
+			} else {
+				setErr("An unexpected error occurred");
+			}
 		} finally {
 			setIsLoading(false);
 		}
@@ -84,7 +83,11 @@ const Login: React.FC = () => {
 									src="/display-pw.png"></img>
 							</div>
 						</div>
-						<Button type="submit">Login</Button>
+						<Button
+							disabled={isLoading}
+							type="submit">
+							Login
+						</Button>
 					</form>
 					{err && <span className="text-red-400">{err}</span>}
 					<p className="underline text-slate-400">

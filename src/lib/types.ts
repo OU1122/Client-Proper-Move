@@ -106,3 +106,10 @@ export interface MapItem {
 	createdAt: string;
 	userId: string;
 }
+
+export type TransitionsModalProps = {
+	handleOpen: () => void;
+	handleClose: () => void;
+	open: boolean;
+	post: SinglePagePost;
+};

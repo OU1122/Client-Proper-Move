@@ -6,13 +6,12 @@ import Button from "../components/button";
 const Register: React.FC = () => {
 	const [err, setErr] = useState<null | string>(null);
 	const navigate = useNavigate();
-
 	const [inputType, setInputType] = useState("password");
 
-	const handleSubmit = async (e) => {
+	const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
-		const formData = new FormData(e.target);
+		const formData = new FormData(e.currentTarget);
 		const username = formData.get("username");
 		const email = formData.get("email");
 		const password = formData.get("password");
@@ -21,7 +20,7 @@ const Register: React.FC = () => {
 			return setErr("Please fill in all fields.");
 		}
 		try {
-			const res = await apiRequest.post("auth/register", {
+			await apiRequest.post("auth/register", {
 				username,
 				email,
 				password,
@@ -30,8 +29,10 @@ const Register: React.FC = () => {
 			setErr(null);
 			navigate("/login");
 		} catch (error) {
-			console.log(error);
-			setErr(error.response.data.message);
+			if (error instanceof Error) {
+				console.log(error);
+				setErr(error.message);
+			}
 		}
 	};
 
@@ -79,11 +80,6 @@ const Register: React.FC = () => {
 							</div>
 						</div>
 						<Button type="submit">Register</Button>
-						{/* <button
-							type="submit"
-							className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide mt-2">
-							Register
-						</button> */}
 					</form>
 					{err && <span className="text-red-400">{err}</span>}
 					<p className="underline text-slate-400">

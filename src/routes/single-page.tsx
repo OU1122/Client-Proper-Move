@@ -69,7 +69,7 @@ const SinglePage: React.FC = () => {
 						__html: DOMPurify.sanitize(post.postDetail.desc),
 					}}></div>
 			</div>
-			<div className="right relative md:w-[35%] mt-7 md:mt-0 md:pl-8 flex flex-col gap-5 pb-10 ">
+			<div className="right relative md:w-[35%] mt-7 md:mt-0 md:pl-8 flex flex-col gap-2 pb-10 ">
 				<div className="absolute -top-2 -left-10 w-screen h-full md:hidden -z-50 bg-[#fcf5f3]"></div>
 				<div>
 					<div>

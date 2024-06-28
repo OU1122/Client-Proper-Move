@@ -1,18 +1,12 @@
-import { useContext, useState } from "react";
-import { AuthContext } from "../context/authContext";
+import { useState } from "react";
+
 import apiRequest from "../lib/apiRequest";
 import UploadWidget from "../components/uploadWidget";
 import Button from "../components/button";
+import useAuth from "../lib/useAuth";
 
 const UpdateProfile: React.FC = () => {
-	const context = useContext(AuthContext);
-
-	if (!context) {
-		throw new Error();
-	}
-
-	const { currentUser, updateUser } = context;
-	const [error, setError] = useState<string | null>(null);
+	const { currentUser, updateUser } = useAuth();
 	const [avatar, setAvatar] = useState<string[]>([]);
 	const [status, setStatus] = useState<string | null>(null);
 	const [inputType, setInputType] = useState("password");
@@ -89,11 +83,7 @@ const UpdateProfile: React.FC = () => {
 							</div>
 						</div>
 						{status ? <span>{status}</span> : null}
-						{/* <button
-							type="submit"
-							className="rounded-lg p-4 bg-yellow-300 font-semibold tracking-wide mt-2">
-							Update
-						</button> */}
+
 						<Button type="submit">Update</Button>
 					</form>
 

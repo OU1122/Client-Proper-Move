@@ -6,13 +6,14 @@ import React, { useState } from "react";
 import emailjs from "@emailjs/browser";
 
 import useAuth from "../lib/useAuth";
+import { TransitionsModalProps } from "../lib/types";
 
 export default function TransitionsModal({
 	handleOpen,
 	handleClose,
 	open,
 	post,
-}) {
+}: TransitionsModalProps) {
 	const { currentUser } = useAuth();
 	const [status, setStatus] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -41,8 +42,11 @@ export default function TransitionsModal({
 			);
 			setStatus("Your message was sent successfully.");
 		} catch (error) {
-			console.log("FAILED...", error.text);
-			setStatus("Failed to send message, please try again.");
+			if (error instanceof Error) {
+				setStatus(error.message);
+			} else {
+				setStatus("An unexpected error occurred");
+			}
 		} finally {
 			setIsLoading(false);
 		}

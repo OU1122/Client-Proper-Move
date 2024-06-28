@@ -1,6 +1,6 @@
 type ShapedImageProps = {
 	imgUrl: string;
-	size?: "normal" | "big";
+	size: "normal" | "big";
 };
 
 const sizeClasses = {

@@ -66,7 +66,7 @@ export const Slider: React.FC<{ data: string[] }> = ({ data }) => {
 						src={images[0]}></img>
 				</div>
 				<div className="secondary-imgs hidden md:flex gap-2 items-center justify-center flex-col  w-full flex-1">
-					{images.slice(1).map((img, index) => (
+					{images.slice(1, 3).map((img, index) => (
 						<img
 							className="cursor-pointer w-full h-full object-cover rounded-lg"
 							src={img}

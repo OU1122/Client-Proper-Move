@@ -1,4 +1,4 @@
-import React, { ReactElement, useState } from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
 
@@ -10,8 +10,11 @@ const SearchBox: React.FC = () => {
 		maxPrice: 0,
 	});
 
-	const handleChange = (e) => {
-		setQuery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setQuery((prev) => ({
+			...prev,
+			[e.currentTarget.name]: e.currentTarget.value,
+		}));
 	};
 
 	const switchType = (value: string) => {
