@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
-import { FiMenu } from "react-icons/fi";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
-
+import { Twirl as Hamburger } from "hamburger-react";
 import useAuth from "../lib/useAuth";
 
 const Navbar: React.FC = () => {
@@ -110,10 +109,10 @@ const Navbar: React.FC = () => {
 					<div
 						id="mobile-menu-icon"
 						className={clsx(
-							"text-black text-3xl absolute right-0 top-8 pr-5",
+							"text-black text-3xl absolute right-0 top-7 pr-5",
 							{ "!text-white": isOpen }
 						)}>
-						<FiMenu />
+						<Hamburger size={25} />
 					</div>
 				</div>
 			</div>
