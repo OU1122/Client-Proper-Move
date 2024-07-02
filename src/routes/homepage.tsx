@@ -52,7 +52,10 @@ const HomePage: React.FC = () => {
 
 				<Link to="http://localhost:5173/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
 					<div className="absolute top-0 left-0 md:left-10 ">
-						<ShapedImage imgUrl="/r1.png" />
+						<ShapedImage
+							size="normal"
+							imgUrl="/r1.png"
+						/>
 					</div>
 				</Link>
 				<Link to="http://localhost:5173/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
@@ -66,7 +69,10 @@ const HomePage: React.FC = () => {
 
 				<Link to="http://localhost:5173/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
 					<div className="absolute top-0 left-32 md:top-[400px] md:left-[300px] ">
-						<ShapedImage imgUrl="/img3.jpeg" />
+						<ShapedImage
+							size="normal"
+							imgUrl="/img3.jpeg"
+						/>
 					</div>
 				</Link>
 			</div>
