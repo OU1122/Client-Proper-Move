@@ -112,7 +112,10 @@ const Navbar: React.FC = () => {
 							"text-black text-3xl absolute right-0 top-7 pr-5",
 							{ "!text-white": isOpen }
 						)}>
-						<Hamburger size={25} />
+						<Hamburger
+							toggled={isOpen}
+							size={25}
+						/>
 					</div>
 				</div>
 			</div>
