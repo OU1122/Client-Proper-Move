@@ -46,11 +46,7 @@ const HomePage: React.FC = () => {
 				</div>
 			</div>
 			<div className="relative h-auto  w-full md:w-[40%] flex justify-center">
-				{/* <img
-					className="w-[300px] sm:w-full sm:absolute sm:top-0 sm:right-0"
-					src="/bg.png"></img> */}
-
-				<Link to="http://localhost:5173/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
+				<Link to="https://proper-move.netlify.app/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
 					<div className="absolute top-0 left-0 md:left-10 ">
 						<ShapedImage
 							size="normal"
@@ -58,7 +54,7 @@ const HomePage: React.FC = () => {
 						/>
 					</div>
 				</Link>
-				<Link to="http://localhost:5173/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
+				<Link to="https://proper-move.netlify.app/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
 					<div className="absolute top-0 left-16 md:top-[150px] md:left-[120px]">
 						<ShapedImage
 							size="big"
@@ -67,7 +63,7 @@ const HomePage: React.FC = () => {
 					</div>
 				</Link>
 
-				<Link to="http://localhost:5173/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
+				<Link to="https://proper-move.netlify.app/list?type=buy&city=&property=house&minPrice=0&maxPrice=0&bedroom=1">
 					<div className="absolute top-0 left-32 md:top-[400px] md:left-[300px] ">
 						<ShapedImage
 							size="normal"
