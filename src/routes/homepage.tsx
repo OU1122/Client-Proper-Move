@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const HomePage: React.FC = () => {
 	return (
 		<div className="relative flex flex-col-reverse md:flex-row m-5 sm:m-6  ">
-			<div className="text-div w-full md:w-[60%] md:pr-[50px] mt-[150px] md:mt-0">
+			<div className="px-4 text-div w-full md:w-[60%] md:pr-[50px] mt-[150px] md:mt-0">
 				<div className="relative">
 					<h1 className="text-4xl font-bold leading-snug pt-10">
 						Find Your Dream Place Faster Than You Can Say Zoopla

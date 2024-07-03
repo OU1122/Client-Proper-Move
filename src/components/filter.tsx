@@ -35,15 +35,12 @@ export const Filter: React.FC = () => {
 
 	return (
 		<div className="my-4">
-			<h1 className="text-xl">
-				Search results{" "}
-				<span className="font-bold">{searchParams.get("city")}</span>
-			</h1>
+			<h1 className="text-xl">Search results</h1>
 			<div className="top mt-4 pr-[10px]">
 				<div>
 					<label
 						htmlFor="city"
-						className="text-sm">
+						className="text-xs">
 						City
 					</label>
 					<input
@@ -61,7 +58,7 @@ export const Filter: React.FC = () => {
 				<div className="flex flex-col basis-1/5">
 					<label
 						htmlFor="type"
-						className="text-sm">
+						className="text-xs">
 						Type
 					</label>
 					<select
@@ -85,7 +82,7 @@ export const Filter: React.FC = () => {
 				<div className="flex flex-col basis-1/5">
 					<label
 						htmlFor="property"
-						className="text-sm">
+						className="text-xs">
 						Property
 					</label>
 					<select
@@ -101,7 +98,7 @@ export const Filter: React.FC = () => {
 				<div className="flex flex-col basis-1/5">
 					<label
 						htmlFor="minPrice"
-						className="text-sm">
+						className="text-xs">
 						Min price
 					</label>
 					<input
@@ -118,7 +115,7 @@ export const Filter: React.FC = () => {
 				<div className="flex flex-col basis-1/5">
 					<label
 						htmlFor="maxPrice"
-						className="text-sm">
+						className="text-xs">
 						Max price
 					</label>
 					<input
@@ -135,8 +132,8 @@ export const Filter: React.FC = () => {
 				<div className="flex flex-col basis-1/5">
 					<label
 						htmlFor="bedroom"
-						className="text-sm">
-						Bedrooms
+						className="text-xs">
+						Min. Bedrooms
 					</label>
 					<input
 						onChange={handleChange}

@@ -13,7 +13,7 @@ const SearchBox: React.FC = () => {
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setQuery((prev) => ({
 			...prev,
-			[e.currentTarget.name]: e.currentTarget.value,
+			[e.target.name]: e.target.value,
 		}));
 	};
 

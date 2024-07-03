@@ -13,16 +13,20 @@ const ListPage: React.FC = () => {
 				<Filter />
 
 				<div className="wrapper flex flex-col pr-[10px] gap-10 overflow-y-scroll pb-10">
-					{posts.map((item) => (
-						<Card
-							key={item.id}
-							post={item}
-						/>
-					))}
+					{posts && posts.length > 0 ? (
+						posts.map((item) => (
+							<Card
+								key={item.id}
+								post={item}
+							/>
+						))
+					) : (
+						<h2>No properties found, try searching again!</h2>
+					)}
 				</div>
 			</div>
 			<div className="pl-2 right hidden sm:block sm:w-[35%] mt-8">
-				<Map items={posts} />
+				{posts && posts.length > 0 && <Map items={posts} />}
 			</div>
 		</div>
 	);

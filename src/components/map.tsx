@@ -5,6 +5,7 @@ import { MapItem } from "../lib/types";
 
 export const Map: React.FC<{ items: MapItem[] }> = ({ items }) => {
 	const convertedLatitude = parseFloat(items[0].latitude);
+
 	const convertedLongitude = parseFloat(items[0].longitude);
 
 	return (
