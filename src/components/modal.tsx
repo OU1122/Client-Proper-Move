@@ -27,7 +27,7 @@ export default function TransitionsModal({
 
 		const templateParams = {
 			to_name: `${post.user.username}`,
-			from_name: `${currentUser?.email}`,
+			from_name: `${currentUser?.userData.email}`,
 			message,
 		};
 

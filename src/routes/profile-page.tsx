@@ -1,6 +1,5 @@
 import Card from "../components/card";
 import { useLoaderData, useNavigate } from "react-router-dom";
-
 import apiRequest from "../lib/apiRequest";
 import Button from "../components/button";
 import useAuth from "../lib/useAuth";
@@ -73,7 +72,7 @@ const ProfilePage: React.FC = () => {
 					<div className="flex flex-row justify-between items-center flex-wrap gap-4 lg:gap-0">
 						<h2 className="text-xl ">User Information</h2>
 						<div className="flex justify-between items-center flex-wrap">
-							<Button to={`/update-profile/${currentUser?.id}`}>
+							<Button to={`/update-profile/${currentUser?.userData.id}`}>
 								Update Profile
 							</Button>
 						</div>
@@ -84,18 +83,20 @@ const ProfilePage: React.FC = () => {
 								<h2 className="text-sm">Avatar:</h2>
 								<img
 									className="w-8 h-8 rounded-full object-cover"
-									src={currentUser?.avatar || "/avatar.jpg"}></img>
+									src={
+										currentUser?.userData.avatar || "/avatar.jpg"
+									}></img>
 							</div>
 							<div className="flex flex-row gap-2 py-1 ">
 								<h2 className="text-sm">Username:</h2>
 								<span className="font-semibold text-sm">
-									{currentUser?.username}
+									{currentUser?.userData.username}
 								</span>
 							</div>
 							<div className="flex flex-row gap-2 py-1">
 								<h2 className="text-sm">E-mail:</h2>
 								<span className="font-semibold text-sm">
-									{currentUser?.email}
+									{currentUser?.userData.email}
 								</span>
 							</div>
 						</div>

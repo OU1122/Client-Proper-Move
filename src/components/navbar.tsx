@@ -65,7 +65,7 @@ const Navbar: React.FC = () => {
 				</ul>
 			</div>
 			<div className="right flex  items-center gap-7  ">
-				{!currentUser ? (
+				{!currentUser?.userData ? (
 					<>
 						<div className="hidden md:block transition-all ease-in hover:scale-[1.05]">
 							<Link
@@ -88,10 +88,12 @@ const Navbar: React.FC = () => {
 							<div className="flex flex-row gap-4 py-2 px-4 bg-white rounded-lg hover:shadow-md ease-in transition-all">
 								<img
 									className=" w-8 h-8 rounded-full object-cover"
-									src={currentUser.avatar || "/avatar.jpg"}></img>
+									src={
+										currentUser.userData.avatar || "/avatar.jpg"
+									}></img>
 
 								<span className="hidden md:block">
-									{currentUser.username}
+									{currentUser.userData.username}
 								</span>
 							</div>
 						</Link>

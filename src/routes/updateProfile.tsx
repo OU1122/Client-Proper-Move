@@ -20,7 +20,7 @@ const UpdateProfile: React.FC = () => {
 		const { username, password, email } = Object.fromEntries(formData);
 
 		try {
-			const res = await apiRequest.put(`/user/${currentUser?.id}`, {
+			const res = await apiRequest.put(`/user/${currentUser?.userData.id}`, {
 				username,
 				password,
 				email,
@@ -56,13 +56,13 @@ const UpdateProfile: React.FC = () => {
 						className="flex flex-col gap-3 mb-3 ">
 						<input
 							name="username"
-							defaultValue={currentUser?.username}
+							defaultValue={currentUser?.userData.username}
 							className="rounded-lg px-4 py-2 border-2 border-slate-400"
 							type="text"
 							placeholder="Username"></input>
 						<input
 							name="email"
-							defaultValue={currentUser?.email}
+							defaultValue={currentUser?.userData.email}
 							className="rounded-lg px-4 py-2 border-2 border-slate-400"
 							type="email"
 							placeholder="Email"></input>
@@ -96,7 +96,7 @@ const UpdateProfile: React.FC = () => {
 				<div className="md:relative pb-5 flex items-center justify-center flex-col gap-4 mb-5 md:mb-0">
 					<img
 						className="w-[100px] h-[100px] md:w-[200px] md:h-[200px] md:mb-0  rounded-full md:translate-x-16 object-cover border-2 border-emerald-600 border-opacity-50"
-						src={currentUser!.avatar || "/avatar.jpg"}></img>
+						src={currentUser!.userData.avatar || "/avatar.jpg"}></img>
 					<div className="bottom-4 left-[90px] md:-bottom-[75px]  md:translate-x-16">
 						<UploadWidget
 							uwConfig={{
