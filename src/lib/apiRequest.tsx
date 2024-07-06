@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiRequest = axios.create({
-	baseURL: "http://localhost:8080/api",
+	baseURL: "https://propermove.azurewebsites.net/api",
 	withCredentials: true,
 });
 
