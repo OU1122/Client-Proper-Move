@@ -43,6 +43,7 @@ const UpdateProfile: React.FC = () => {
 	const handleMouseUp = () => {
 		setInputType("password");
 	};
+	console.log(currentUser);
 
 	return (
 		<div className="flex flex-col-reverse h-auto md:h-[70%] md:flex-row m-10  ">

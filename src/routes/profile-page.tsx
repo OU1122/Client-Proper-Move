@@ -20,7 +20,6 @@ const ProfilePage: React.FC = () => {
 			console.log(error);
 		}
 	};
-
 	return (
 		<div className="flex flex-col md:flex-row full h-[calc(100%-96px)] pb-5">
 			<div className="flex flex-col left w-full md:w-[65%] px-4 mb-7 md:mb-0">
